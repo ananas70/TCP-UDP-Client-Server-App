@@ -1,0 +1,11 @@
+SERVER initiated: 
+Entering while loop: 
+	-------------- Waiting ---------------------
+	 TCP_connection
+im in TCP connection
+	 Accepted client
+	 Nagle
+	 Vom citi id-ul clientului
+	 Am citit id-ul clientului
+	 New client
+	-------------- Waiting ---------------------

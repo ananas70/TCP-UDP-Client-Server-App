@@ -5,16 +5,17 @@
 #include <arpa/inet.h>
 #include <vector>
 #include <sys/poll.h>
-#include <types.h>
+#include "common.h"
+#include "types.h"
 #include <cmath>
 #include <netinet/tcp.h>
-#include <common.h>
 #include <unistd.h>
 #include <experimental/optional>
 #include <algorithm>
 
 using namespace std;
 // SUBSCRIBER = CLIENT TCP 
+FILE *history = fopen("src/history", "wt");
 
 vector <struct pollfd> pfds;    // vector in care stocam file descriptorii pentru multiplexare
                                 // alocat dinamic pentru eficienta
@@ -42,63 +43,75 @@ void UDP_connection(int udp_sock, struct sockaddr_in udp_addr) {
 
     // Construim notificarea catre clientii TCP abonati la topic - client_notification
 
-    struct client_notification* client_pckt;
-    memset(client_pckt, 0 , sizeof(struct client_notification));
+    struct client_notification* client_pckt = {};
 
     //<IP_CLIENT_UDP>:<PORT_CLIENT_UDP> - <TOPIC> - <TIP_DATE> - <VALOARE_MESAJ>
-    client_pckt->ip_client_udp = udp_addr.sin_addr.s_addr;  //nuj daca e bine
+    client_pckt->ip_client_udp = udp_addr.sin_addr.s_addr;  //nuj daca e bine // mai facem ntohl??
     client_pckt->port_client_udp = udp_addr.sin_port;
     client_pckt->topic = string(message->topic, 50);
 
+
+    uint32_t data_32;
+    uint16_t data_16;
+    int sign;
+
     switch (message->data_type) {
     case 0:
+    {
         // INT
         strcpy(client_pckt->data_type, "INT");
         // Octet de semn urmat de un uint32_t formatat conform network byte order
 
-        uint32_t data = ntohl(*(uint32_t *)(message->content + 1)); 
-        int sign = message->content[0];
+        data_32 = ntohl(*(uint32_t *)(message->content + 1)); 
+        sign = message->content[0];
         if (sign == 1)
-            data = - data;
+            data_32 = - data_32;
 
         // Using snprintf to safely convert uint32_t to a string
-        sprintf(client_pckt->content, "%u", data);
+        sprintf(client_pckt->content, "%u", data_32);
         break;
-
+    }
     case 1:
+    {
         // SHORT REAL
         strcpy(client_pckt->data_type, "SHORT_REAL");
 
         // uint16_t reprezentand modulul numarului inmultit cu 100
-        uint16_t data = ntohs(*(uint16_t *)(message->content));
-        sprintf(client_pckt->content, "%.2f", (data/100.0));
+        data_16 = ntohs(*(uint16_t *)(message->content));
+        sprintf(client_pckt->content, "%.2f", (data_16/100.0));
         break;
+    }
     case 2:
+    {
         // FLOAT
         strcpy(client_pckt->data_type, "FLOAT");
         /* Un octet de semn, urmat de un uint32_t (in network order) reprezentand modulul numarului obtinut din
         alipirea partii intregi de partea zecimala a numarului, urmat de un uint8_t ce reprezinta modulul puterii 
         negative a lui 10 cu care trebuie inmultit modulul pentru a obtine numarul original (in modul) */
-        uint32_t data;
-        memcpy(&data, message->content + 1, sizeof(uint32_t));
-        data = ntohl(data);
-        int sign = message->content[0];
+        memcpy(&data_32, message->content + 1, sizeof(uint32_t));
+        data_32 = ntohl(data_32);
+        sign = message->content[0];
         if (sign == 1)
-            data = - data;
+            data_32 = - data_32;
         int exp = message->content[5];
-        sprintf(client_pckt->content, "%lf", data / pow(10, exp));
+        sprintf(client_pckt->content, "%lf", data_32 / pow(10, exp));
         break;
+    }
     case 3:
+    {
         // STRING 
         strcpy(client_pckt->data_type, "STRING");
 
         /*Sir de maxim 1500 de caractere, terminat cu \0 sau delimitat de finalul datagramei pentru lungimi
         mai mici*/
         strcpy(client_pckt->content, message->content);
-        break;        
+        break; 
+    }
     default:
+    {
         cerr << "Unknown data type sent bu UDP client\n";
         break;
+    }
     }
 
     // Trimite notificarea (vezi la ce sunt abonati nebunii aia)
@@ -113,7 +126,8 @@ void UDP_connection(int udp_sock, struct sockaddr_in udp_addr) {
             }
 }
 
-void TCP_connection(int tcp_sock, struct sockaddr_in tcp_addr) {
+void TCP_connection(int tcp_sock) {
+    fprintf(history, "im in TCP connection\n");
     // tcp_sock e cel pasiv (cel de listen)
     struct sockaddr_in cli_addr;
     socklen_t cli_socklen = sizeof(cli_addr);
@@ -121,32 +135,53 @@ void TCP_connection(int tcp_sock, struct sockaddr_in tcp_addr) {
     memset(&cli_addr, 0, cli_socklen);
 
     int cli_sock = accept(tcp_sock, (struct sockaddr *) &cli_addr, &cli_socklen);
+
     if(cli_sock < 0) {
         cerr << "Can't accept\n";
         exit(1);
     }
-
     // dezactivam algoritmul lui Nagle
-    int flag = 1;
-    setsockopt(cli_sock, IPPROTO_TCP, TCP_NODELAY, (char *)&flag, sizeof(int));
+    // int flag = 1;
+    // setsockopt(cli_sock, IPPROTO_TCP, TCP_NODELAY, (char *)&flag, sizeof(int));
+    int bufsize = 0;
+    setsockopt(cli_sock, SOL_SOCKET, SO_SNDBUF, &bufsize, sizeof(int));
+    
+    fprintf(history, "\t Accepted client\n");
+    fflush(history);
+    fprintf(history, "\t Nagle\n");
+    fflush(history);
 
     // preluam id-ul clientului
 
     char* id_client = new char[ID_LEN]; //nuj cat trebuie luat
-    int bytes_read = recv_all(cli_sock, id_client, ID_LEN);
+
+    fprintf(history, "\t Vom citi id-ul clientului\n");
+    fflush(history);
+
+    int bytes_read = recv(cli_sock, id_client, ID_LEN, 0);
+    if(bytes_read <= 0) {
+        cerr << "Nothing received\n";
+        return;
+    }
+
+    fprintf(history, "\t Am citit id-ul clientului\n");
+    fflush(history);
+
     char *resized_id_client = new char[bytes_read];
-    copy(id_client, id_client + ID_LEN, resized_id_client);
+    std::copy(id_client, id_client + ID_LEN, resized_id_client);
+    // id_client = resized_id_client;
     delete[] resized_id_client;
-    id_client = resized_id_client;
 
     bool found_client = false;
-    int i;
+    long unsigned int i;
     // vedem daca deja exista in baza noastra de date
     for(i = 0 ; i < clients.size() && !found_client ; i ++)
         if(strcmp(id_client, clients[i].id) == 0)
             found_client = true;
 
     if(!found_client) {
+            fprintf(history, "\t New client\n");
+            fflush(history);
         // Client NOU
         // Ii adaugam pe el si socket-ul lui
         pfds.push_back({cli_sock, POLLIN, 0});
@@ -159,16 +194,20 @@ void TCP_connection(int tcp_sock, struct sockaddr_in tcp_addr) {
         clients.push_back(new_client);
 
         //New client <ID_CLIENT> connected from IP:PORT.
-        printf("New client %s connected from %s:%d\n", id_client, inet_ntoa(cli_addr.sin_addr), ntohs(cli_addr.sin_port));
+        printf("New client %s connected from %s:%hu.\n", id_client, inet_ntoa(cli_addr.sin_addr), ntohs(cli_addr.sin_port));
     }
 
     else {
+        fprintf(history, "\t client already existing\n");
+            fflush(history);
         // Clientul deja exista. Verificam sa vedem daca nu cumva e deja conectat (sau nu, poate s-a reconectat)
         
         // Refolosim contorul i unde s-a oprit cautarea in for
 
         // Daca e deja conectat, mars acas
         if(clients[i].connected == true){
+            fprintf(history, "\t deja conectat, mars acas\n");
+            fflush(history);
             printf("Client %s already connected.\n", id_client);
             //exit routine -- eventual completezi
             close(cli_sock);
@@ -177,6 +216,8 @@ void TCP_connection(int tcp_sock, struct sockaddr_in tcp_addr) {
 
         // S-a reconectat. Adaugam iar conexiunea
         else {
+            fprintf(history, "\t S-a reconectat. Adaugam iar conexiunea\n");
+            fflush(history);
             pfds.push_back({cli_sock, POLLIN, 0});
             clients[i].connected = true;
             clients[i].fd = cli_sock;
@@ -226,7 +267,7 @@ void remove_pfd(struct pollfd* pfd) {
 }
 
 
-void handle_client_request(struct client_request* request, int fd, struct client_data* client) {
+void handle_client_request(struct client_request* request, struct client_data* client) {
 
     auto it = find(client->subscriptions.begin(),client->subscriptions.end(), request->topic);
 
@@ -245,7 +286,7 @@ void handle_client_request(struct client_request* request, int fd, struct client
     }
 }
 
-void SUBSCRIBER_connection(int tcp_sock, struct sockaddr_in tcp_addr, pollfd pfd) {
+void SUBSCRIBER_connection(pollfd pfd) {
     char buff[BUF_LEN];
     memset(buff, 0 , BUF_LEN);
 
@@ -265,10 +306,12 @@ void SUBSCRIBER_connection(int tcp_sock, struct sockaddr_in tcp_addr, pollfd pfd
     }
 
     else {
+    fprintf(history, "\t Buffer is  = %s\n", buff);
+                    fflush(history);
         // SUBSCRIBE sau UNSUBSCRIBE
         // (un)subscribe <TOPIC>
         struct client_request* request = (struct client_request*) buff;
-        handle_client_request(request, pfd.fd, found_client);
+        handle_client_request(request, found_client);
 
     }
 }
@@ -278,6 +321,15 @@ int main(int argc, char *argv[]) {
     // ??? in loc de exit(1) peste tot ar trebui sa dai terminate_server si sa inchizi toti socket-ii si dupa aia sa dai exit(1)?
 
     setvbuf(stdout, NULL, _IONBF, BUFSIZ);  //buffering la afișare dezactivat
+    //
+    if (history == nullptr) {
+        // Handle error if unable to open the file
+        perror("Error opening fileeeeeee");
+        return 1;
+    }
+    //
+    fprintf(history, "SERVER initiated: \n");
+    fflush(history);
 
     //Verificare pornire corectă server: ./server <PORT_DORIT>
     if(argc != 2) {
@@ -315,8 +367,10 @@ int main(int argc, char *argv[]) {
     setsockopt(udp_sock, SOL_SOCKET, SO_REUSEADDR, &flag, sizeof(int));
 
     // Dezactivam Nagle pentru socket-ul TCP de listen
-    flag = 1;
-    setsockopt(tcp_sock, IPPROTO_TCP, TCP_NODELAY, &flag, sizeof(int));
+    // flag = 1;
+    // setsockopt(tcp_sock, IPPROTO_TCP, TCP_NODELAY, &flag, sizeof(int));
+    int bufsize = 0;
+setsockopt(tcp_sock, SOL_SOCKET, SO_SNDBUF, &bufsize, sizeof(int));
 
     /* Set port and IP for TCP */
     tcp_addr.sin_family = AF_INET;
@@ -353,7 +407,12 @@ int main(int argc, char *argv[]) {
 
     int rc; // for errors
     bool stop_server = false;
+    fprintf(history, "Entering while loop: \n");
+    fflush(history);
     while(!stop_server) {
+        fprintf(history, "\t-------------- Waiting ---------------------\n");
+        fflush(history);
+
         rc = poll(pfds.data(), pfds.size(), -1);    //.data() - intoarce adresa de start a vectorului
         if(rc < 0) {
             cerr << "Poll error\n";
@@ -368,19 +427,24 @@ int main(int argc, char *argv[]) {
                 // Evaluam file descriptor-ul pfd.fd
 
                 if(pfd.fd == udp_sock) {
+                                fprintf(history, "\t UDP_connection \n");
+                                fflush(history);
 
                     UDP_connection(udp_sock, udp_addr);
                 }
 
                 else if(pfd.fd == tcp_sock) {
+                    fprintf(history, "\t TCP_connection\n");
+                    fflush(history);
 
-                    TCP_connection(tcp_sock, tcp_addr);
+                    TCP_connection(tcp_sock);
                 }
 
                 else if(pfd.fd == 0) {   
                     //STDIN
-                    bool stop = STDIN_message();
-                    if(stop == true){
+                    fprintf(history, "\t STDIN message\n");
+                    fflush(history);
+                    if(STDIN_message() == true){
                         // oprim server-ul
                         stop_server = true;
                         break;
@@ -390,10 +454,18 @@ int main(int argc, char *argv[]) {
                 
                 else {
                     //Subscriber (client tcp)
-                    SUBSCRIBER_connection(tcp_sock, tcp_addr, pfd);
+                    fprintf(history, "\t SUBSCRIBER_connection\n");
+                    fflush(history);
+                    SUBSCRIBER_connection(pfd);
                 }
             }
+        if(stop_server == true)
+            break;
     }
 
     //close chestii
+    close(tcp_sock);
+    close(udp_sock);
+    fclose(history);
+    return 0;
 }

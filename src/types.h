@@ -23,8 +23,8 @@ struct udp_pckt {
 
 struct client_notification {
     //<IP_CLIENT_UDP>:<PORT_CLIENT_UDP> - <TOPIC> - <TIP_DATE> - <VALOARE_MESAJ>
-    uint32_t ip_client_udp;
-    int port_client_udp;
+    uint32_t ip_client_udp; // retinuta in ? order
+    int port_client_udp; // retinuta in ? order
     string topic;
     char data_type[DATA_TYPE_LEN];
     char content[CONTENT_LEN];
