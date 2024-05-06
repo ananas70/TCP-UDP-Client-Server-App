@@ -23,6 +23,22 @@ vector <struct pollfd> pfds;    // vector in care stocam file descriptorii pentr
 vector <struct client_data> clients;    // clientii TCP (subscriber-ii)
 
 
+void printClients() {
+    fprintf(history, "--------Printing all clients:-----------\n");
+    for (size_t i = 0; i < clients.size(); ++i) {
+        const auto& client = clients[i];
+        fprintf(history, "Index: %zu\n", i);
+        fprintf(history, "Client ID: %s\n", client.id);
+        fprintf(history, "Connected: %s\n", (client.connected ? "Yes" : "No"));
+        fprintf(history, "File Descriptor: %d\n", client.fd);
+        fprintf(history, "Subscriptions:\n");
+        for (const auto& sub : client.subscriptions) {
+            fprintf(history, "- %s\n", sub.c_str());
+        }
+        fprintf(history, "\n");
+    }
+    fprintf(history, "----------------------------------\n");
+}
 void UDP_connection(int udp_sock, struct sockaddr_in udp_addr) {
     // Primesti si parsezi datele primite, iei topic-ul si datele despre el si notifici clientii
     /* La primirea unui mesaj UDP valid, serverul trebuie sa asigure trimiterea acestuia catre
@@ -33,28 +49,41 @@ void UDP_connection(int udp_sock, struct sockaddr_in udp_addr) {
     char buff[BUF_LEN];
     memset(buff, 0 , BUF_LEN);
 
+    int bytesread = recvfrom(udp_sock, buff, BUF_LEN, 0 , (struct sockaddr *) &udp_addr, &udp_socklen);
     //Receive data from the UDP client
-    if(recvfrom(udp_sock, buff, BUF_LEN, 0 , (struct sockaddr *) &udp_addr, &udp_socklen) < 0) {
+    if(bytesread < 0) {
         cerr << "Error while receiving UDP client's msg\n";
         exit(1);
     }
 
-    struct udp_pckt* message = (struct udp_pckt *) buff;
-
+    fprintf(history, "\t Read UDP buffer, bytesread = %d, buffer = %s, size = %d \n", bytesread, buff, strlen(buff));
+    fflush(history);
+    struct udp_pckt* message = reinterpret_cast<udp_pckt*>(buff);
+    fprintf(history, "\t Initializat message\n");
+    fflush(history);
     // Construim notificarea catre clientii TCP abonati la topic - client_notification
 
-    struct client_notification* client_pckt = {};
-
+    struct client_notification* client_pckt = new client_notification;
+    fprintf(history, "\t Initializat client_pckt\n");
+    fflush(history);
     //<IP_CLIENT_UDP>:<PORT_CLIENT_UDP> - <TOPIC> - <TIP_DATE> - <VALOARE_MESAJ>
     client_pckt->ip_client_udp = udp_addr.sin_addr.s_addr;  //nuj daca e bine // mai facem ntohl??
+    fprintf(history, "\t Initializat IP\n");
+    fflush(history);
     client_pckt->port_client_udp = udp_addr.sin_port;
-    client_pckt->topic = string(message->topic, 50);
-
-
+    fprintf(history, "\t Initializat PORT\n");
+    fflush(history);
+    strcpy(client_pckt->topic, message->topic);
+    fprintf(history, "\t Initializat TOPIC\n");
+    fflush(history);
+    fprintf(history, "\t Construit pachet UDP\n");
+    fflush(history);
     uint32_t data_32;
     uint16_t data_16;
     int sign;
 
+    fprintf(history, "\t Analiza :\n");
+    fflush(history);
     switch (message->data_type) {
     case 0:
     {
@@ -114,16 +143,24 @@ void UDP_connection(int udp_sock, struct sockaddr_in udp_addr) {
     }
     }
 
+    fprintf(history, "\t Trimite catre clienti\n");
+    fflush(history);
+
     // Trimite notificarea (vezi la ce sunt abonati nebunii aia)
-    for(auto& client : clients) 
+    for(auto& client : clients) {
+        fprintf(history, "\t\tClient  = %s\n", client.id);
+        fflush(history);
         for(auto& subscription : client.subscriptions) 
-            if (client_pckt->topic == subscription && client.connected) {
+            if (string(client_pckt->topic) == subscription && client.connected) {
+                fprintf(history, "\t\t\tFound client!! = %s\n", client.id);
+                fflush(history);
                 int rc = send(client.fd, client_pckt, sizeof(client_pckt), 0);
                 if (rc < 0) {
                     cerr << "Send error\n";
                     return;
                 }
             }
+    }
 }
 
 void TCP_connection(int tcp_sock) {
@@ -140,11 +177,15 @@ void TCP_connection(int tcp_sock) {
         cerr << "Can't accept\n";
         exit(1);
     }
+
+    // Facem socket-ii reutilizabili
+    int flag = 1;
+    setsockopt(tcp_sock, SOL_SOCKET, SO_REUSEADDR, &flag, sizeof(int));
     // dezactivam algoritmul lui Nagle
     // int flag = 1;
     // setsockopt(cli_sock, IPPROTO_TCP, TCP_NODELAY, (char *)&flag, sizeof(int));
-    int bufsize = 0;
-    setsockopt(cli_sock, SOL_SOCKET, SO_SNDBUF, &bufsize, sizeof(int));
+    flag = 1;
+    setsockopt(tcp_sock, IPPROTO_TCP, TCP_NODELAY, (char *)&flag, sizeof(int));
     
     fprintf(history, "\t Accepted client\n");
     fflush(history);
@@ -198,8 +239,12 @@ void TCP_connection(int tcp_sock) {
     }
 
     else {
+        i--;
         fprintf(history, "\t client already existing\n");
             fflush(history);
+            fprintf(history, "\t client INDEX = %d\n", i);
+            fflush(history);
+            printClients();
         // Clientul deja exista. Verificam sa vedem daca nu cumva e deja conectat (sau nu, poate s-a reconectat)
         
         // Refolosim contorul i unde s-a oprit cautarea in for
@@ -221,12 +266,14 @@ void TCP_connection(int tcp_sock) {
             pfds.push_back({cli_sock, POLLIN, 0});
             clients[i].connected = true;
             clients[i].fd = cli_sock;
-            printf("New client %s connected from %s:%d\n", id_client, inet_ntoa(cli_addr.sin_addr), ntohs(cli_addr.sin_port));
+            // printf("New client %s connected from %s:%d.\n", id_client, inet_ntoa(cli_addr.sin_addr), ntohs(cli_addr.sin_port));
         }
     }
 
     // sterge la final id-ul alocat dinamic
     delete[] id_client; 
+    fprintf(history, "\t Exit TCP_connection\n");
+    fflush(history);
 
 }
 
@@ -246,6 +293,8 @@ bool STDIN_message() {
         return true;
     }
     return false;
+    fprintf(history, "\t Exit STDIN_message\n");
+    fflush(history);
 }
 
 
@@ -266,10 +315,20 @@ void remove_pfd(struct pollfd* pfd) {
     }
 }
 
+void printRequest(const client_request* request) {
+    fprintf(history, "---------------Client Request:---------------\n");
+    fprintf(history, "Type: %c\n", request->type);
+    fprintf(history, "Topic: %s\n", request->topic);
+    fprintf(history, "\n");
+    fprintf(history, "---------------------------------------------\n");
+}
 
 void handle_client_request(struct client_request* request, struct client_data* client) {
-
-    auto it = find(client->subscriptions.begin(),client->subscriptions.end(), request->topic);
+    fprintf(history, "I'm in handle_client_request \n");
+    fflush(history);
+    printRequest(request);
+    printClients();
+    auto it = find(client->subscriptions.begin(),client->subscriptions.end(), string(request->topic));
 
     if(request->type == 's') {
         // subscribe
@@ -277,22 +336,50 @@ void handle_client_request(struct client_request* request, struct client_data* c
             return; // e deja abonat
 
         // altfel, adaugam abonamentul (m-as abona la inima ta)
-        client->subscriptions.push_back(request->topic);
+        client->subscriptions.push_back(string(request->topic));
     }
     else {
         //unsubscribe
         if (it != client->subscriptions.end())
             client->subscriptions.erase(it);
     }
+    printClients();
+    fprintf(history, "Exit handle_client_request \n");
+        fflush(history);
+
 }
 
 void SUBSCRIBER_connection(pollfd pfd) {
-    char buff[BUF_LEN];
-    memset(buff, 0 , BUF_LEN);
+    char buff[SUBSCRIBER_CMD_LEN];
+    memset(buff, 0 , SUBSCRIBER_CMD_LEN);
+
+    fprintf(history, "\t Finding client by id \n");
+    fflush(history);
 
     struct client_data* found_client = get_client_by_fd(pfd.fd);
-    int bytes_read = recv_all(pfd.fd, buff, SUBSCRIBER_CMD_LEN);
+    // if(found_client == NULL) {
+    //     cerr<<"error finding client";
+    //     fprintf(history, "\t Error finding client with get_client_by_fd \n");
+    //     fflush(history);
+    //     return;
+    // }
+    fprintf(history, "\t Reading data from client \n");
+    fflush(history);
+
+
+    int flag = 1;
+    setsockopt(pfd.fd, IPPROTO_TCP, TCP_NODELAY, (char *)&flag, sizeof(int));
+
+
+    int bytes_read = recv(pfd.fd, buff, sizeof(client_request) + 1, 0);
+    if(bytes_read < 0) {
+        fprintf(history, "\t Error recv \n");
+        fflush(history);
+        return;
+    }
     if(bytes_read == 0) {
+        fprintf(history, "\t Disconnected client \n");
+        fflush(history);
         printf("Client %s disconnected.\n", found_client->id);
 
         // stergem din clients si din pfds
@@ -303,18 +390,38 @@ void SUBSCRIBER_connection(pollfd pfd) {
         // dam si unsubscribe???
         found_client->connected = false;
         found_client->fd = -1;
+        return;
     }
 
     else {
-    fprintf(history, "\t Buffer is  = %s\n", buff);
-                    fflush(history);
+    fprintf(history, "\t Connected client. Parsing command.\n");
+    fprintf(history, "\t BUFFER = %s, length = %d \n", buff, strlen(buff));
+    fprintf(history, "\t bytes read = %d \n", bytes_read);
+        fflush(history);
+
+    if(buff == NULL) {
+    fprintf(history, "\tEmpty buffer\n");
+    fflush(history);
+    return;
+    }
         // SUBSCRIBE sau UNSUBSCRIBE
         // (un)subscribe <TOPIC>
-        struct client_request* request = (struct client_request*) buff;
+        client_request* request = (client_request*)buff;
+        // printRequest(request);
+        fprintf(history, "\t request->type = %c\n", request->type);
+        fflush(history);
+        fprintf(history, "\t request->topic = %s\n", request->topic);
+        fflush(history);
+        fprintf(history, "\t BUFFER = %s, length = %d \n", buff, strlen(buff));
+        fprintf(history, "\t Going to handle_client_request \n");
+        fflush(history);
         handle_client_request(request, found_client);
 
     }
+        fprintf(history, "\t Exit SUBSCRIBER_connection\n\n\n");
+        fflush(history);
 }
+
 
 
 int main(int argc, char *argv[]) {
@@ -369,8 +476,8 @@ int main(int argc, char *argv[]) {
     // Dezactivam Nagle pentru socket-ul TCP de listen
     // flag = 1;
     // setsockopt(tcp_sock, IPPROTO_TCP, TCP_NODELAY, &flag, sizeof(int));
-    int bufsize = 0;
-setsockopt(tcp_sock, SOL_SOCKET, SO_SNDBUF, &bufsize, sizeof(int));
+    flag = 1;
+    setsockopt(tcp_sock, IPPROTO_TCP, TCP_NODELAY, (char *)&flag, sizeof(int));
 
     /* Set port and IP for TCP */
     tcp_addr.sin_family = AF_INET;
@@ -410,8 +517,6 @@ setsockopt(tcp_sock, SOL_SOCKET, SO_SNDBUF, &bufsize, sizeof(int));
     fprintf(history, "Entering while loop: \n");
     fflush(history);
     while(!stop_server) {
-        fprintf(history, "\t-------------- Waiting ---------------------\n");
-        fflush(history);
 
         rc = poll(pfds.data(), pfds.size(), -1);    //.data() - intoarce adresa de start a vectorului
         if(rc < 0) {
@@ -427,14 +532,14 @@ setsockopt(tcp_sock, SOL_SOCKET, SO_SNDBUF, &bufsize, sizeof(int));
                 // Evaluam file descriptor-ul pfd.fd
 
                 if(pfd.fd == udp_sock) {
-                                fprintf(history, "\t UDP_connection \n");
-                                fflush(history);
+                    fprintf(history, "UDP_connection \n");
+                    fflush(history);
 
                     UDP_connection(udp_sock, udp_addr);
                 }
 
                 else if(pfd.fd == tcp_sock) {
-                    fprintf(history, "\t TCP_connection\n");
+                    fprintf(history, "TCP_connection\n");
                     fflush(history);
 
                     TCP_connection(tcp_sock);
@@ -442,7 +547,7 @@ setsockopt(tcp_sock, SOL_SOCKET, SO_SNDBUF, &bufsize, sizeof(int));
 
                 else if(pfd.fd == 0) {   
                     //STDIN
-                    fprintf(history, "\t STDIN message\n");
+                    fprintf(history, "STDIN message\n");
                     fflush(history);
                     if(STDIN_message() == true){
                         // oprim server-ul
@@ -454,11 +559,16 @@ setsockopt(tcp_sock, SOL_SOCKET, SO_SNDBUF, &bufsize, sizeof(int));
                 
                 else {
                     //Subscriber (client tcp)
-                    fprintf(history, "\t SUBSCRIBER_connection\n");
+                    fprintf(history, "SUBSCRIBER_connection\n");
                     fflush(history);
                     SUBSCRIBER_connection(pfd);
+                    break;
                 }
             }
+            // erase closed file descriptors from the vector
+		pfds.erase(
+			remove_if(pfds.begin(), pfds.end(), [](pollfd p_fd) { return p_fd.fd == -1; }),
+			pfds.end());
         if(stop_server == true)
             break;
     }

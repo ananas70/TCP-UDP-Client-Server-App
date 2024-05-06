@@ -1,11 +1,103 @@
 SERVER initiated: 
 Entering while loop: 
-	-------------- Waiting ---------------------
-	 TCP_connection
+TCP_connection
 im in TCP connection
 	 Accepted client
 	 Nagle
 	 Vom citi id-ul clientului
 	 Am citit id-ul clientului
 	 New client
-	-------------- Waiting ---------------------
+	 Exit TCP_connection
+SUBSCRIBER_connection
+	 Finding client by id 
+	 Reading data from client 
+	 Connected client. Parsing command.
+	 BUFFER = sporno
+, length = 7 
+	 bytes read = 51 
+	 request->type = s
+	 request->topic = porno
+
+	 BUFFER = sporno
+, length = 7 
+	 Going to handle_client_request 
+I'm in handle_client_request 
+---------------Client Request:---------------
+Type: s
+Topic: porno
+
+
+---------------------------------------------
+--------Printing all clients:-----------
+Index: 0
+Client ID: 1
+Connected: Yes
+File Descriptor: 6
+Subscriptions:
+
+----------------------------------
+--------Printing all clients:-----------
+Index: 0
+Client ID: 1
+Connected: Yes
+File Descriptor: 6
+Subscriptions:
+- porno
+
+
+----------------------------------
+Exit handle_client_request 
+	 Exit SUBSCRIBER_connection
+
+
+SUBSCRIBER_connection
+	 Finding client by id 
+	 Reading data from client 
+	 Connected client. Parsing command.
+	 BUFFER = scasa_iubirii
+, length = 14 
+	 bytes read = 51 
+	 request->type = s
+	 request->topic = casa_iubirii
+
+	 BUFFER = scasa_iubirii
+, length = 14 
+	 Going to handle_client_request 
+I'm in handle_client_request 
+---------------Client Request:---------------
+Type: s
+Topic: casa_iubirii
+
+
+---------------------------------------------
+--------Printing all clients:-----------
+Index: 0
+Client ID: 1
+Connected: Yes
+File Descriptor: 6
+Subscriptions:
+- porno
+
+
+----------------------------------
+--------Printing all clients:-----------
+Index: 0
+Client ID: 1
+Connected: Yes
+File Descriptor: 6
+Subscriptions:
+- porno
+
+- casa_iubirii
+
+
+----------------------------------
+Exit handle_client_request 
+	 Exit SUBSCRIBER_connection
+
+
+SUBSCRIBER_connection
+	 Finding client by id 
+	 Reading data from client 
+	 Disconnected client 
+STDIN message

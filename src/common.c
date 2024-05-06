@@ -8,28 +8,26 @@
     TODO 1.1: Rescrieți funcția de mai jos astfel încât ea să facă primirea
     a exact len octeți din buffer.
 */
-int recv_all(int sockfd, void *buffer, size_t len) {
-  //UN JEG - NU FACE BUFFERING
-
-int bufsize = 0;
-setsockopt(sockfd, SOL_SOCKET, SO_SNDBUF, &bufsize, sizeof(int));
+int recv_all(int sockfd, void *buffer, size_t len)
+{
   size_t bytes_received = 0;
   size_t bytes_remaining = len;
   char *buff = (char *)buffer;
-  while (bytes_remaining) {
-    int bytes_recv = recv(sockfd, buff, bytes_remaining, 0);
-    if(bytes_recv == -1) {
-      fprintf(stderr, "error recv_all");
-      return 0; //nuj
-    }
-
+  while (bytes_remaining)
+  {
+    size_t bytes_recv = recv(sockfd, buff, bytes_remaining, 0);
+    if(bytes_recv <=0 )
+      {fprintf(stderr, "error recv\n");
+      return bytes_received; }
     bytes_received += bytes_recv;
     buff += bytes_received;
     bytes_remaining -= bytes_recv;
   }
 
+  /*
+    TODO: Returnam exact cati octeti am citit
+  */
   return bytes_received;
-
 }
 
 /*

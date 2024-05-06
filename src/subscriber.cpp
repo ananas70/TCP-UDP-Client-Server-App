@@ -21,32 +21,25 @@ vector <struct pollfd> pfds;    // vector in care stocam file descriptorii pentr
                                 // alocat dinamic pentru eficienta
 
 
-void submit_request(char* buff, int tcp_sock) {
-    fprintf(history, "\t I'm in submit request function oh yeah\n");
-     fprintf(history, "\t\t buffer is actually : %s\n", buff);
-fflush(history);
-    // Comenzi acceptate:
-    // subscribe <TOPIC> 
-    // unsubscribe <TOPIC>
+void printRequest(const client_request* request) {
+    fprintf(history, "---------------Client Request:---------------\n");
+    fprintf(history, "Type: %c\n", request->type);
+    fprintf(history, "Topic: %s\n", request->topic);
+    fprintf(history, "\n");
+    fprintf(history, "---------------------------------------------\n");
+}
 
-    // pune un \0 la final in caz ca nu s-au primit fix 1500 de octeti??
-    // buff[strlen(buff) - 1] = 0;
 
-    struct client_request* request = new client_request;
-    if (request == NULL) {
-        cerr << "Memory allocation failed\n";
-        return;
-    }
-        fprintf(history, "\t\t allocated request\n");
-fflush(history);
+
+void build_request(struct client_request* request, char* buff) {
     char *p = strtok(buff, " ");
     if(p == NULL) {
         // am primit gol
         cerr << "No command received\n";
         return;
+        fprintf(history, "\t\t null command received\n");
+        fflush(history);
     }
-            fprintf(history, "\t\t null command recerived\n");
-fflush(history);
 
     if(strcmp(p, "subscribe") == 0)
         request->type = 's';
@@ -57,10 +50,9 @@ fflush(history);
         return;
     }
     fprintf(history, "\t\t request type = %c\n\n", request->type);
-fflush(history);
+    fflush(history);
     
-            fprintf(history, "\t\t getting topic\n");
-            fprintf(history, "\t\t buffer is actually : %s\n", buff);
+    fprintf(history, "\t\t getting topic\n");
     fflush(history);
     // Preluare topic
     p = strtok(NULL, " ");
@@ -74,34 +66,43 @@ fflush(history);
         return;
     }
 
-                fprintf(history, "\t\t Converting topic -> string here we go\n");
+    fprintf(history, "\t\t Converting topic -> string here we go\n");
+    strcpy(request->topic,p);
+    fprintf(history, "\t\t request->topic = %s\n", request->topic);
+    fflush(history);
+    fprintf(history, "\t\t topic -> string DONE\n");
+    fflush(history);
+}
 
-                fprintf(history, "\t\t1--- p = %s\n", p);
-                fprintf(history, "\t\t 2 --- p = %s\n", string(p).c_str());
-                
-fflush(history);
-request->topic = std::string("MOOO");
-fprintf(history, "\t\t 2 --- p = %s\n", request->topic.c_str());
-fflush(history);
 
-    request->topic = std::string(p);
-            fprintf(history, "\t\t topic -> string DONE\n");
+void submit_request(char* buff, int tcp_sock) {
+    fprintf(history, "\t I'm in submit request function oh yeah\n");
+     fprintf(history, "\t\t buffer is actually : %s\n", buff);
 fflush(history);
+    // Comenzi acceptate:
+    // subscribe <TOPIC> 
+    // unsubscribe <TOPIC>
+
+    // pune un \0 la final in caz ca nu s-au primit fix 1500 de octeti??
+    // buff[strlen(buff) - 1] = 0;
+
+    struct client_request request;
+    build_request(&request, buff);
     // Trimitere catre server
-    if (send(tcp_sock, (char*) request, sizeof(request), 0) < 0) {
+    if (send(tcp_sock, (char*) &request, sizeof(request),0) <= 0) {
         cerr << "Error send\n";
         return;
     }
 
-            fprintf(history, "\t\t topic sent\n");
-fflush(history);
+    fprintf(history, "\t\t request sent\n");
+    fflush(history);
+    printRequest(&request);
     // Afisari
-    if(request->type == 's')
-        cout <<"Subscribed to topic "<< request->topic << endl;
+    if(request.type == 's')
+        cout <<"Subscribed to topic "<< request.topic << endl;
     else
-        cout <<"Unsubscribed from topic "<< request->topic << endl;
+        cout <<"Unsubscribed from topic "<< request.topic << endl;
 
-    //elibereaza memoria
 }
 
 
@@ -146,9 +147,14 @@ fflush(history);
 void parse_server_msg(int tcp_sock) {
     char buff[BUF_LEN];
     memset(buff, 0, BUF_LEN);
-    if(recv(tcp_sock, buff, sizeof(struct client_notification), 0) < 0) {   //eventual schimbi in recv_all
+    if(recv(tcp_sock, buff, sizeof(struct client_notification), 0) < 0) {
         cerr << "Error recv\n";
         return;
+    }
+    if(recv(tcp_sock, buff, sizeof(struct client_notification), 0) == 0) {
+        cerr << "Server ended connection\n";
+        close(tcp_sock);
+        exit(1);
     }
     fprintf(history, "\t bufffer is = %s\n", buff);
     fflush(history);    
@@ -198,15 +204,15 @@ int main(int argc, char *argv[]) {
 
 
     //dezactivam nagle
-    // int flag = 1;
-    // setsockopt(tcp_sock, IPPROTO_TCP, TCP_NODELAY, (char *)&flag, sizeof(int));
-    int bufsize = 0;
-setsockopt(tcp_sock, SOL_SOCKET, SO_SNDBUF, &bufsize, sizeof(int));
+    int flag = 1;
+    setsockopt(tcp_sock, IPPROTO_TCP, TCP_NODELAY, (char *)&flag, sizeof(int));
+//     int bufsize = 0;
+// setsockopt(tcp_sock, SOL_SOCKET, SO_SNDBUF, &bufsize, sizeof(int));
     fprintf(history, "\tdezactivat nagle \n");
     fflush(history);
 
     // make reusable
-    int flag = 1;
+    flag = 1;
     setsockopt(tcp_sock, SOL_SOCKET, SO_REUSEADDR, &flag, sizeof(int));
 
     fprintf(history, "\t made reusable\n");
@@ -241,7 +247,7 @@ setsockopt(tcp_sock, SOL_SOCKET, SO_SNDBUF, &bufsize, sizeof(int));
     fflush(history);
     while(!stop_subscriber) {
         fprintf(history, "\t-------------- Waiting ---------------------\n");
-                    fflush(history);
+        fflush(history);
         rc = poll(pfds.data(), pfds.size(), -1);    //.data() - intoarce adresa de start a vectorului
         if(rc < 0) {
             cerr << "Poll error\n";
@@ -277,7 +283,6 @@ setsockopt(tcp_sock, SOL_SOCKET, SO_SNDBUF, &bufsize, sizeof(int));
             }
     }
 
-subscriber_shutdown:
     close(tcp_sock);
     fclose(history);
     return 0;
