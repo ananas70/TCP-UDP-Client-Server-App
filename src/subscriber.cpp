@@ -155,7 +155,7 @@ void parse_server_msg(int tcp_sock) {
         return;
     }
     if(rc == 0) {
-        cerr << "Server ended connection\n";
+        cerr << "Server ended connection :( \n";
         close(tcp_sock);
         exit(1);
     }
@@ -166,7 +166,7 @@ void parse_server_msg(int tcp_sock) {
 
     // <IP_CLIENT_UDP>:<PORT_CLIENT_UDP> - <TOPIC> - <TIP_DATE> - <VALOARE_MESAJ>
 
-    printf("%s:%hu - ", inet_ntoa(*(struct in_addr *) &notif->ip_client_udp), ntohs(notif->port_client_udp));
+    // printf("%s:%hu - ", inet_ntoa(*(struct in_addr *) &notif->ip_client_udp), ntohs(notif->port_client_udp));
     cout << notif->topic<< " - " << notif->data_type << " - " << notif->content << endl; 
 
     fprintf(history, "\t Exit parse_server_msg\n");

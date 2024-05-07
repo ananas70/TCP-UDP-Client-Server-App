@@ -40,13 +40,7 @@ void printClients() {
     fprintf(history, "----------------------------------\n");
 }
 
-void build_notification(client_notification* client_pckt, struct sockaddr_in udp_addr, struct udp_pckt* message) {
-    client_pckt->ip_client_udp = udp_addr.sin_addr.s_addr;  //nuj daca e bine // mai facem ntohl??
-    fprintf(history, "\t Initializat IP\n");
-    fflush(history);
-    client_pckt->port_client_udp = udp_addr.sin_port;
-    fprintf(history, "\t Initializat PORT\n");
-    fflush(history);
+void build_notification(client_notification* client_pckt, struct udp_pckt* message) {
     strcpy(client_pckt->topic, message->topic);
     fprintf(history, "\t Initializat TOPIC\n");
     fflush(history);
@@ -67,11 +61,11 @@ void build_notification(client_notification* client_pckt, struct sockaddr_in udp
 
         data_32 = ntohl(*(uint32_t *)(message->content + 1)); 
         sign = message->content[0];
-        if (sign == 1)
+        if (sign == '1')
             data_32 = - data_32;
 
         // Using snprintf to safely convert uint32_t to a string
-        sprintf(client_pckt->content, "%u", data_32);
+        sprintf(client_pckt->content, "%d", data_32);
         break;
     }
     case 1:
@@ -119,14 +113,12 @@ void build_notification(client_notification* client_pckt, struct sockaddr_in udp
 
 }
 
-void printNotification(const client_notification* notification) {
-    printf("<%s>:%d - %s - %s - %s\n",
-           inet_ntoa(*((struct in_addr*)&notification->ip_client_udp)),
-           ntohs(notification->port_client_udp),
-           notification->topic,
-           notification->data_type,
-           notification->content);
-}
+// void printNotification(const client_notification* notification) {
+//     printf("<%s>:%d - %s - %s - %s\n",
+//            notification->topic,
+//            notification->data_type,
+//            notification->content);
+// }
 
 
 void UDP_connection(int udp_sock, struct sockaddr_in udp_addr) {
@@ -146,8 +138,6 @@ void UDP_connection(int udp_sock, struct sockaddr_in udp_addr) {
         exit(1);
     }
 
-    fprintf(history, "\t Read UDP buffer, bytesread = %d, buffer = %s, size = %d \n", bytesread, buff, strlen(buff));
-    fflush(history);
     struct udp_pckt* message = reinterpret_cast<udp_pckt*>(buff);
     fprintf(history, "\t Initializat message\n");
     fflush(history);
@@ -158,7 +148,7 @@ void UDP_connection(int udp_sock, struct sockaddr_in udp_addr) {
     fflush(history);
     //<IP_CLIENT_UDP>:<PORT_CLIENT_UDP> - <TOPIC> - <TIP_DATE> - <VALOARE_MESAJ>
 
-    build_notification(&client_pckt, udp_addr, message);
+    build_notification(&client_pckt, message);
 
     fprintf(history, "\t Trimite catre clienti pentru topic-ul [%s]\n", client_pckt.topic);
     fflush(history);
@@ -268,7 +258,7 @@ void TCP_connection(int tcp_sock) {
         i--;
         fprintf(history, "\t client already existing\n");
             fflush(history);
-            fprintf(history, "\t client INDEX = %d\n", i);
+            fprintf(history, "\t client INDEX = %ld\n", i);
             fflush(history);
             printClients();
         // Clientul deja exista. Verificam sa vedem daca nu cumva e deja conectat (sau nu, poate s-a reconectat)
@@ -421,7 +411,6 @@ void SUBSCRIBER_connection(pollfd pfd) {
 
     else {
     fprintf(history, "\t Connected client. Parsing command.\n");
-    fprintf(history, "\t BUFFER = %s, length = %d \n", buff, strlen(buff));
     fprintf(history, "\t bytes read = %d \n", bytes_read);
         fflush(history);
 
@@ -438,7 +427,6 @@ void SUBSCRIBER_connection(pollfd pfd) {
         fflush(history);
         fprintf(history, "\t request->topic = %s\n", request->topic);
         fflush(history);
-        fprintf(history, "\t BUFFER = %s, length = %d \n", buff, strlen(buff));
         fprintf(history, "\t Going to handle_client_request \n");
         fflush(history);
         handle_client_request(request, found_client);
