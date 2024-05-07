@@ -39,34 +39,8 @@ void printClients() {
     }
     fprintf(history, "----------------------------------\n");
 }
-void UDP_connection(int udp_sock, struct sockaddr_in udp_addr) {
-    // Primesti si parsezi datele primite, iei topic-ul si datele despre el si notifici clientii
-    /* La primirea unui mesaj UDP valid, serverul trebuie sa asigure trimiterea acestuia catre
-    toti clientii TCP care sunt abonati la topic-ul respectiv.*/
-    // mai trebuie sa verificam ca sunt activi???
 
-    socklen_t udp_socklen = sizeof(udp_addr);
-    char buff[BUF_LEN];
-    memset(buff, 0 , BUF_LEN);
-
-    int bytesread = recvfrom(udp_sock, buff, BUF_LEN, 0 , (struct sockaddr *) &udp_addr, &udp_socklen);
-    //Receive data from the UDP client
-    if(bytesread < 0) {
-        cerr << "Error while receiving UDP client's msg\n";
-        exit(1);
-    }
-
-    fprintf(history, "\t Read UDP buffer, bytesread = %d, buffer = %s, size = %d \n", bytesread, buff, strlen(buff));
-    fflush(history);
-    struct udp_pckt* message = reinterpret_cast<udp_pckt*>(buff);
-    fprintf(history, "\t Initializat message\n");
-    fflush(history);
-    // Construim notificarea catre clientii TCP abonati la topic - client_notification
-
-    struct client_notification* client_pckt = new client_notification;
-    fprintf(history, "\t Initializat client_pckt\n");
-    fflush(history);
-    //<IP_CLIENT_UDP>:<PORT_CLIENT_UDP> - <TOPIC> - <TIP_DATE> - <VALOARE_MESAJ>
+void build_notification(client_notification* client_pckt, struct sockaddr_in udp_addr, struct udp_pckt* message) {
     client_pckt->ip_client_udp = udp_addr.sin_addr.s_addr;  //nuj daca e bine // mai facem ntohl??
     fprintf(history, "\t Initializat IP\n");
     fflush(history);
@@ -143,23 +117,75 @@ void UDP_connection(int udp_sock, struct sockaddr_in udp_addr) {
     }
     }
 
-    fprintf(history, "\t Trimite catre clienti\n");
-    fflush(history);
+}
 
+void printNotification(const client_notification* notification) {
+    printf("<%s>:%d - %s - %s - %s\n",
+           inet_ntoa(*((struct in_addr*)&notification->ip_client_udp)),
+           ntohs(notification->port_client_udp),
+           notification->topic,
+           notification->data_type,
+           notification->content);
+}
+
+
+void UDP_connection(int udp_sock, struct sockaddr_in udp_addr) {
+    // Primesti si parsezi datele primite, iei topic-ul si datele despre el si notifici clientii
+    /* La primirea unui mesaj UDP valid, serverul trebuie sa asigure trimiterea acestuia catre
+    toti clientii TCP care sunt abonati la topic-ul respectiv.*/
+    // mai trebuie sa verificam ca sunt activi???
+
+    socklen_t udp_socklen = sizeof(udp_addr);
+    char buff[BUF_LEN];
+    memset(buff, 0 , BUF_LEN);
+
+    int bytesread = recvfrom(udp_sock, buff, BUF_LEN, 0 , (struct sockaddr *) &udp_addr, &udp_socklen);
+    //Receive data from the UDP client
+    if(bytesread < 0) {
+        cerr << "Error while receiving UDP client's msg\n";
+        exit(1);
+    }
+
+    fprintf(history, "\t Read UDP buffer, bytesread = %d, buffer = %s, size = %d \n", bytesread, buff, strlen(buff));
+    fflush(history);
+    struct udp_pckt* message = reinterpret_cast<udp_pckt*>(buff);
+    fprintf(history, "\t Initializat message\n");
+    fflush(history);
+    // Construim notificarea catre clientii TCP abonati la topic - client_notification
+
+    struct client_notification client_pckt;
+    fprintf(history, "\t Initializat client_pckt\n");
+    fflush(history);
+    //<IP_CLIENT_UDP>:<PORT_CLIENT_UDP> - <TOPIC> - <TIP_DATE> - <VALOARE_MESAJ>
+
+    build_notification(&client_pckt, udp_addr, message);
+
+    fprintf(history, "\t Trimite catre clienti pentru topic-ul [%s]\n", client_pckt.topic);
+    fflush(history);
+    printClients();
     // Trimite notificarea (vezi la ce sunt abonati nebunii aia)
     for(auto& client : clients) {
-        fprintf(history, "\t\tClient  = %s\n", client.id);
+        fprintf(history, "\t\tClientul din for  = %s\n", client.id);
         fflush(history);
-        for(auto& subscription : client.subscriptions) 
-            if (string(client_pckt->topic) == subscription && client.connected) {
-                fprintf(history, "\t\t\tFound client!! = %s\n", client.id);
+        for (const auto& sub : client.subscriptions) {
+            fprintf(history, "[%s]\n", sub.c_str());
+            fflush(history);
+        }
+        for(auto& subscription : client.subscriptions) {
+            if (string(client_pckt.topic) == subscription && client.connected) {
+                
+                fprintf(history, "\t\t\tFound client!! = %s with fd = %d\n", client.id, client.fd);
+                fprintf(history, "\t\t\tSending a message to him\n");
                 fflush(history);
-                int rc = send(client.fd, client_pckt, sizeof(client_pckt), 0);
-                if (rc < 0) {
+                int rc = send(client.fd, (char*) &client_pckt, sizeof(client_pckt), 0);
+                if (rc <= 0) {
                     cerr << "Send error\n";
                     return;
                 }
+                fprintf(history, "\t\t\tSent [%d] data to him\n", rc);
+                fflush(history);
             }
+        }
     }
 }
 

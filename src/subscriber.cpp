@@ -61,13 +61,14 @@ void build_request(struct client_request* request, char* buff) {
         return;
     }
 
-    if(strlen(p) > 50) {
+    if(strlen(p) > 55) {    // pune macro
         cerr << "Too long received\n";
         return;
     }
 
     fprintf(history, "\t\t Converting topic -> string here we go\n");
     strcpy(request->topic,p);
+    request->topic[strlen(request->topic) - 1]  = '\0';
     fprintf(history, "\t\t request->topic = %s\n", request->topic);
     fflush(history);
     fprintf(history, "\t\t topic -> string DONE\n");
@@ -145,25 +146,31 @@ fflush(history);
 
 
 void parse_server_msg(int tcp_sock) {
-    char buff[BUF_LEN];
-    memset(buff, 0, BUF_LEN);
-    if(recv(tcp_sock, buff, sizeof(struct client_notification), 0) < 0) {
+    int LEN = sizeof(client_notification) + 1;
+    char buff[LEN];
+    memset(buff, 0, LEN);
+    int rc = recv(tcp_sock, buff, sizeof(client_notification), 0);
+    if(rc < 0) {
         cerr << "Error recv\n";
         return;
     }
-    if(recv(tcp_sock, buff, sizeof(struct client_notification), 0) == 0) {
+    if(rc == 0) {
         cerr << "Server ended connection\n";
         close(tcp_sock);
         exit(1);
     }
-    fprintf(history, "\t bufffer is = %s\n", buff);
-    fflush(history);    
-
+ 
     // afisare mesaj primit
-    struct client_notification* notif = (struct client_notification*) buff;
+
+    client_notification* notif = (client_notification*) buff;
+
     // <IP_CLIENT_UDP>:<PORT_CLIENT_UDP> - <TOPIC> - <TIP_DATE> - <VALOARE_MESAJ>
+
     printf("%s:%hu - ", inet_ntoa(*(struct in_addr *) &notif->ip_client_udp), ntohs(notif->port_client_udp));
     cout << notif->topic<< " - " << notif->data_type << " - " << notif->content << endl; 
+
+    fprintf(history, "\t Exit parse_server_msg\n");
+    fflush(history);  
 }
 
 int main(int argc, char *argv[]) {
@@ -233,8 +240,6 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
-    fprintf(history, "\t sent id = %s cu length = %d to server\n",argv[1], 1 + strlen(argv[1]));
-    fflush(history);
 
     // Actualizam lista de file descriptori pfds
     pfds.push_back({tcp_sock, POLLIN, 0});
@@ -266,6 +271,8 @@ int main(int argc, char *argv[]) {
                     fflush(history);
                     // Am primit un mesaj pe socket-ul tcp cu care comunicam cu server-ul
                     parse_server_msg(tcp_sock);
+                    fprintf(history, "\t parse_server_msg STOPPED \n");
+                    fflush(history);
                 }
 
                 else {   

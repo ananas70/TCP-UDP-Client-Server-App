@@ -4,64 +4,1927 @@
 	dezactivat nagle 
 	 made reusable
 	connected to server 
-	 sent id = 1 cu length = 2 to server
 	 updated pfds
 Starting while loop 
 	-------------- Waiting ---------------------
-	 STDIN_message 
-	 I'm in STD_message function 
-		 Set the buffer to 0 
-		 read smth from the buffer oh yeah 
-		 buffer = subscribe porno
- 
-	 got NON-exit command
-	 I'm in submit request function oh yeah
-		 buffer is actually : subscribe porno
-
-		 request type = s
-
-		 getting topic
-		 Converting topic -> string here we go
-		 request->topic = porno
-
-		 topic -> string DONE
-		 request sent
----------------Client Request:---------------
-Type: s
-Topic: porno
-
-
----------------------------------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
 	-------------- Waiting ---------------------
-	 STDIN_message 
-	 I'm in STD_message function 
-		 Set the buffer to 0 
-		 read smth from the buffer oh yeah 
-		 buffer = subscribe casa_iubirii
- 
-	 got NON-exit command
-	 I'm in submit request function oh yeah
-		 buffer is actually : subscribe casa_iubirii
-
-		 request type = s
-
-		 getting topic
-		 Converting topic -> string here we go
-		 request->topic = casa_iubirii
-
-		 topic -> string DONE
-		 request sent
----------------Client Request:---------------
-Type: s
-Topic: casa_iubirii
-
-
----------------------------------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
 	-------------- Waiting ---------------------
-	 STDIN_message 
-	 I'm in STD_message function 
-		 Set the buffer to 0 
-		 read smth from the buffer oh yeah 
-		 buffer = exit
- 
-		got exit command mars acas 
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 
+	 Exit parse_server_msg
+	 parse_server_msg STOPPED 
+	-------------- Waiting ---------------------
+	 parse_server_msg 

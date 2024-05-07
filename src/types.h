@@ -5,11 +5,11 @@
 #include <vector>
 #include <string>
 
-#define BUF_LEN 1024
-#define TOPIC_LEN 50
+#define BUF_LEN 1600
+#define TOPIC_LEN 51    //e o naroada fix cu len = 50
 #define CONTENT_LEN 1500
 #define DATA_TYPE_LEN 10
-#define ID_LEN 5
+#define ID_LEN 10
 #define SUBSCRIBER_CMD_LEN 70
 
 using namespace std;
@@ -24,7 +24,7 @@ struct udp_pckt {
 struct client_notification {
     //<IP_CLIENT_UDP>:<PORT_CLIENT_UDP> - <TOPIC> - <TIP_DATE> - <VALOARE_MESAJ>
     uint32_t ip_client_udp; // retinuta in ? order
-    int port_client_udp; // retinuta in ? order
+    int port_client_udp; // retinuta in ? order//////
     char topic[TOPIC_LEN];
     char data_type[DATA_TYPE_LEN];
     char content[CONTENT_LEN];
