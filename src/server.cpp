@@ -42,7 +42,8 @@ void printClients() {
 
 void build_notification(client_notification* client_pckt, struct udp_pckt* message) {
     strcpy(client_pckt->topic, message->topic);
-    fprintf(history, "\t Initializat TOPIC\n");
+    client_pckt->topic[50] = 0;
+    fprintf(history, "\t TOPIC = %s\n", client_pckt->topic);
     fflush(history);
     fprintf(history, "\t Construit pachet UDP\n");
     fflush(history);
@@ -61,7 +62,7 @@ void build_notification(client_notification* client_pckt, struct udp_pckt* messa
 
         data_32 = ntohl(*(uint32_t *)(message->content + 1)); 
         sign = message->content[0];
-        if (sign == '1')
+        if (sign)
             data_32 = - data_32;
 
         // Using snprintf to safely convert uint32_t to a string
@@ -138,9 +139,7 @@ void UDP_connection(int udp_sock, struct sockaddr_in udp_addr) {
         exit(1);
     }
 
-    struct udp_pckt* message = reinterpret_cast<udp_pckt*>(buff);
-    fprintf(history, "\t Initializat message\n");
-    fflush(history);
+    udp_pckt* message = (udp_pckt*)buff;
     // Construim notificarea catre clientii TCP abonati la topic - client_notification
 
     struct client_notification client_pckt;
@@ -282,7 +281,7 @@ void TCP_connection(int tcp_sock) {
             pfds.push_back({cli_sock, POLLIN, 0});
             clients[i].connected = true;
             clients[i].fd = cli_sock;
-            // printf("New client %s connected from %s:%d.\n", id_client, inet_ntoa(cli_addr.sin_addr), ntohs(cli_addr.sin_port));
+            printf("New client %s connected from %s:%d.\n", id_client, inet_ntoa(cli_addr.sin_addr), ntohs(cli_addr.sin_port));
         }
     }
 
