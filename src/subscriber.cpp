@@ -61,10 +61,10 @@ void build_request(struct client_request* request, char* buff) {
         return;
     }
 
-    if(strlen(p) > 55) {    // pune macro
-        cerr << "Too long received\n";
-        return;
-    }
+    // if(strlen(p) > 55) {    // pune macro
+    //     cerr << "Too long received\n";
+    //     return;
+    // }
 
     fprintf(history, "\t\t Converting topic -> string here we go\n");
     strcpy(request->topic,p);
@@ -164,10 +164,13 @@ void parse_server_msg(int tcp_sock) {
 
     client_notification* notif = (client_notification*) buff;
 
-    // <IP_CLIENT_UDP>:<PORT_CLIENT_UDP> - <TOPIC> - <TIP_DATE> - <VALOARE_MESAJ>
 
+    // <TOPIC> - <TIP_DATE> - <VALOARE_MESAJ>
+    string topic = string(notif->topic, 50);    //Vezi cum repari ciudatenia asta ca habar n-am
+    fprintf(history, "UITE = [%s]    [%s]\n",notif->topic, notif->data_type);
+    fflush(history);
     // printf("%s:%hu - ", inet_ntoa(*(struct in_addr *) &notif->ip_client_udp), ntohs(notif->port_client_udp));
-    cout << notif->topic<< " - " << notif->data_type << " - " << notif->content << endl; 
+    cout << topic.c_str()<< " - " << notif->data_type << " - " << notif->content << endl; 
 
     fprintf(history, "\t Exit parse_server_msg\n");
     fflush(history);  

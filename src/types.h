@@ -6,7 +6,7 @@
 #include <string>
 
 #define BUF_LEN 1600
-#define TOPIC_LEN 51    //e o naroada fix cu len = 50
+#define TOPIC_LEN 50    //e o naroada fix cu len = 50
 #define CONTENT_LEN 1500
 #define DATA_TYPE_LEN 11
 #define ID_LEN 10

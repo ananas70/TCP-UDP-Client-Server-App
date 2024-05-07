@@ -41,17 +41,17 @@ void printClients() {
 }
 
 void build_notification(client_notification* client_pckt, struct udp_pckt* message) {
-    strcpy(client_pckt->topic, message->topic);
-    client_pckt->topic[50] = 0;
+    // strcpy(client_pckt->topic, message->topic);
+    // client_pckt->topic[50] = '\0';
     fprintf(history, "\t TOPIC = %s\n", client_pckt->topic);
-    fflush(history);
-    fprintf(history, "\t Construit pachet UDP\n");
     fflush(history);
     uint32_t data_32;
     uint16_t data_16;
     int sign;
 
     fprintf(history, "\t Analiza :\n");
+    fflush(history);
+    fprintf(history, "\t DATA TYPE = [%d] :\n", message->data_type);
     fflush(history);
     switch (message->data_type) {
     case 0:
@@ -86,13 +86,12 @@ void build_notification(client_notification* client_pckt, struct udp_pckt* messa
         /* Un octet de semn, urmat de un uint32_t (in network order) reprezentand modulul numarului obtinut din
         alipirea partii intregi de partea zecimala a numarului, urmat de un uint8_t ce reprezinta modulul puterii 
         negative a lui 10 cu care trebuie inmultit modulul pentru a obtine numarul original (in modul) */
-        memcpy(&data_32, message->content + 1, sizeof(uint32_t));
-        data_32 = ntohl(data_32);
+        double x = ntohl(*(uint32_t*)(message->content + 1));
         sign = message->content[0];
         if (sign == 1)
-            data_32 = - data_32;
+            x = - x;
         int exp = message->content[5];
-        sprintf(client_pckt->content, "%lf", data_32 / pow(10, exp));
+        sprintf(client_pckt->content, "%lf", x / pow(10, exp));
         break;
     }
     case 3:
@@ -107,11 +106,11 @@ void build_notification(client_notification* client_pckt, struct udp_pckt* messa
     }
     default:
     {
-        cerr << "Unknown data type sent bu UDP client\n";
+        cerr << "Unknown data type = ["<< message->data_type<<"] sent bu UDP client\n";
         break;
     }
-    }
 
+}
 }
 
 // void printNotification(const client_notification* notification) {
@@ -129,27 +128,39 @@ void UDP_connection(int udp_sock, struct sockaddr_in udp_addr) {
     // mai trebuie sa verificam ca sunt activi???
 
     socklen_t udp_socklen = sizeof(udp_addr);
-    char buff[BUF_LEN];
-    memset(buff, 0 , BUF_LEN);
+    int LEN = sizeof(udp_pckt);
+    udp_pckt* message = new udp_pckt;
+    // char buff[LEN];
+    // memset(buff, 0 , LEN);
+    memset(message, 0 , sizeof(udp_pckt));
 
-    int bytesread = recvfrom(udp_sock, buff, BUF_LEN, 0 , (struct sockaddr *) &udp_addr, &udp_socklen);
     //Receive data from the UDP client
-    if(bytesread < 0) {
+    int bytesread = recvfrom(udp_sock, message, LEN, 0 , (struct sockaddr *) &udp_addr, &udp_socklen);
+
+    if(bytesread <= 0) {
         cerr << "Error while receiving UDP client's msg\n";
         exit(1);
     }
+    // fprintf(history, "\t BUFF UDP = %s\n",buff );
+    // fflush(history);
 
-    udp_pckt* message = (udp_pckt*)buff;
     // Construim notificarea catre clientii TCP abonati la topic - client_notification
+    fprintf(history, "\t MESSAGE UDP: TOPIC = [%s], TYPE = [%d], CONTENT = [%s]\n", message->topic, message->data_type, message->content);
+    fflush(history);
+
+
 
     struct client_notification client_pckt;
+    memset(&client_pckt, 0, sizeof(client_notification));
+
     fprintf(history, "\t Initializat client_pckt\n");
     fflush(history);
-    //<IP_CLIENT_UDP>:<PORT_CLIENT_UDP> - <TOPIC> - <TIP_DATE> - <VALOARE_MESAJ>
 
+    strncpy(client_pckt.topic, message->topic, TOPIC_LEN);
     build_notification(&client_pckt, message);
 
-    fprintf(history, "\t Trimite catre clienti pentru topic-ul [%s]\n", client_pckt.topic);
+
+    fprintf(history, "\t Trimite catre clienti pentru topic-ul [%s]\n", message->topic);
     fflush(history);
     printClients();
     // Trimite notificarea (vezi la ce sunt abonati nebunii aia)
@@ -161,7 +172,7 @@ void UDP_connection(int udp_sock, struct sockaddr_in udp_addr) {
             fflush(history);
         }
         for(auto& subscription : client.subscriptions) {
-            if (string(client_pckt.topic) == subscription && client.connected) {
+            if (string(message->topic) == subscription && client.connected) {
                 
                 fprintf(history, "\t\t\tFound client!! = %s with fd = %d\n", client.id, client.fd);
                 fprintf(history, "\t\t\tSending a message to him\n");
