@@ -7468,9 +7468,6 @@ Subscriptions:
 			Found client!! = C2 with fd = 7
 			Sending a message to him
 			Sent [1561] data to him
-			Found client!! = C2 with fd = 7
-			Sending a message to him
-			Sent [1561] data to him
 SUBSCRIBER_connection
 	 Finding client by id 
 	 Reading data from client 

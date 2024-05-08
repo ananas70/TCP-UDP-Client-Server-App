@@ -206,6 +206,7 @@ void send_notification_to_client(client_data client, char* topic, client_notific
                 }
                 fprintf(history, "\t\t\tSent [%d] data to him\n", rc);
                 fflush(history);
+                return;
             }
     }
 }
