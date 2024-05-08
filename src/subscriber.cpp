@@ -1,16 +1,4 @@
-#include <iostream>
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
-#include <arpa/inet.h>
-#include <netinet/tcp.h>
-
-#include <vector>
-#include <string>
-#include <sys/socket.h>
-#include <sys/poll.h>
-
-#include "types.h"
+#include "general_utils.h"
 
 using namespace std;
 
@@ -31,7 +19,7 @@ void build_request(struct client_request* request, char* buff) {
     else if(strcmp(p, "unsubscribe") == 0)
         request->type = 'u';
     else {
-        cerr << "Wrong command oops\n";
+        cerr << "Wrong command\n";
         return;
     }
     
@@ -58,7 +46,7 @@ void submit_request(char* buff, int tcp_sock) {
     build_request(&request, buff);
 
     // Trimitere către server
-    if (send(tcp_sock, (char*) &request, sizeof(request),0) <= 0) {
+    if (send(tcp_sock, (char*) &request, sizeof(request), 0) <= 0) {
         cerr << "Error send\n";
         return;
     }
@@ -111,7 +99,7 @@ void parse_server_msg(int tcp_sock) {
     }
 
     if(rc == 0) {
-        cerr << "Server ended connection :( \n";
+        cerr << "Server ended connection\n";
         close(tcp_sock);
         exit(1);
     }

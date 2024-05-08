@@ -5,6 +5,11 @@ SRCDIR := src
 BUILDDIR := build
 TARGETS := server subscriber
 
+GENERAL_SRCS := $(SRCDIR)/general_utils.c
+GENERAL_OBJS := $(BUILDDIR)/general_utils.o
+
+SUBSCRIPTION_SRCS := $(SRCDIR)/subscription.c
+SUBSCRIPTION_OBJS := $(BUILDDIR)/subscription.o
 
 SERVER_SRCS := $(SRCDIR)/server.cpp
 SERVER_OBJS := $(BUILDDIR)/server.o
@@ -26,10 +31,10 @@ $(BUILDDIR)/%.o: $(SRCDIR)/%.cpp
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-server: $(SERVER_OBJS) $(COMMON_OBJS)
+server: $(SERVER_OBJS) $(GENERAL_OBJS) $(SUBSCRIPTION_OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
-subscriber: $(SUBSCRIBER_OBJS) $(COMMON_OBJS)
+subscriber: $(SUBSCRIBER_OBJS) $(GENERAL_OBJS) $(SUBSCRIPTION_OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
