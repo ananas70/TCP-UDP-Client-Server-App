@@ -192,6 +192,7 @@ void UDP_connection(int udp_sock, struct sockaddr_in udp_addr) {
 
     if(bytesread <= 0) {
         cerr << "Error while receiving UDP client's msg\n";
+        close(udp_sock);
         exit(1);
     }
 
@@ -221,6 +222,7 @@ void TCP_connection(int tcp_sock) {
 
     if(cli_sock < 0) {
         cerr << "Eroor: accept - ser\n";
+        close(tcp_sock);
         exit(1);
     }
 
@@ -433,7 +435,6 @@ void SUBSCRIBER_connection(pollfd pfd) {
 
 
 int main(int argc, char *argv[]) {
-    // ??? in loc de exit(1) peste tot ar trebui sa dai terminate_server si sa inchizi toti socket-ii si dupa aia sa dai exit(1)?
 
     setvbuf(stdout, NULL, _IONBF, BUFSIZ);  //buffering la afișare dezactivat
 
@@ -462,6 +463,7 @@ int main(int argc, char *argv[]) {
     udp_sock = socket(AF_INET, SOCK_DGRAM, 0);
     if(udp_sock < 0){
         cerr << "[SERV] Error while creating TCP socket\n";
+        close(tcp_sock);
         exit(1);
     }
 
@@ -469,7 +471,7 @@ int main(int argc, char *argv[]) {
     int flag = 1;
     setsockopt(tcp_sock, SOL_SOCKET, SO_REUSEADDR, &flag, sizeof(int));
 
-    flag = 1; // chiar e nevoie ?
+    flag = 1;
     setsockopt(udp_sock, SOL_SOCKET, SO_REUSEADDR, &flag, sizeof(int));
 
     // Dezactivăm Nagle pentru socket-ul TCP de listen
@@ -489,10 +491,14 @@ int main(int argc, char *argv[]) {
     /* Facem bind */
     if(bind(tcp_sock, (struct sockaddr*)&tcp_addr, sizeof(tcp_addr)) < 0) {
         cerr << "[SERV] Couldn't bind to the port\n";
+        close(tcp_sock);
+        close(udp_sock);
         exit(1);
     }
     if(bind(udp_sock, (struct sockaddr*)&udp_addr, sizeof(udp_addr)) < 0) {
         cerr << "[SERV] Couldn't bind to the port\n";
+        close(tcp_sock);
+        close(udp_sock);
         exit(1);
     }
 
@@ -500,6 +506,8 @@ int main(int argc, char *argv[]) {
 
     if(listen(tcp_sock, INT8_MAX) < 0) {
         cerr << "Error while listening\n";
+        close(tcp_sock);
+        close(udp_sock);
         exit(1);
     }
 
@@ -518,6 +526,8 @@ int main(int argc, char *argv[]) {
         rc = poll(pfds.data(), pfds.size(), -1);
         if(rc < 0) {
             cerr << "Poll error\n";
+            close(tcp_sock);
+            close(udp_sock);
             exit(1);
         }
 
