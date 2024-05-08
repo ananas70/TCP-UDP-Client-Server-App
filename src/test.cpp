@@ -46,6 +46,9 @@ bool match(const string& pattern, const string& topic) {
                 return false;
         }
     }
+
+        if(getline(topic_stream, topic_word, '/'))
+        return false;
     return true;
 }
 
@@ -62,8 +65,8 @@ vector<string> filterTopics(const vector<string>& allTopics, const string& patte
 }
 
 int main() {
-    vector<string> allTopics = {"upb/ec/100/pressure"};
-    string pattern = "+/ec/100/pressure";
+    vector<string> allTopics = {"upb/precis/100/schedule/monday/8","upb/ec/100/pressure", "upb/precis/100/humidity","upb/ec/100/schedule/tuesday/12" };
+    string pattern = "upb/+/100/+";
     
     vector<string> filteredTopics = filterTopics(allTopics, pattern);
     

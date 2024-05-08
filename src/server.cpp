@@ -163,6 +163,9 @@ bool match_topic(string pattern, string topic) {
                 return false;
         }
     }
+
+    if(getline(topic_stream, topic_word, '/'))
+        return false;
     return true;
 }
 
@@ -182,7 +185,7 @@ void send_notification_to_client(client_data client, char* topic, client_notific
             // vedem daca are wildcard sau nu
             if(subscription.find_first_of("*+") != string::npos) {
                 // ARE WILDCARD
-                if(match_topic(subscription, string(topic)))
+                if((string(topic) == "*" || match_topic(subscription, string(topic))) && client.connected)
                     ok = true;
             }
             else {
@@ -451,24 +454,26 @@ void subscribe(struct client_data* client, string wanted_topic, char type) {
 
 
 
-// void subscribe_wildcard(struct client_data* client, string wanted_topic, char type) {
-//     fprintf(history, "sunt in subscribe wildcard!!!!!!\n");
-//     fflush(history);
-//     if(wanted_topic == "*"){
-//         fprintf(history, "MA ABONEZ LA TOT!!!!!!\n");
-//         fflush(history);
-//         //(un)subscribe to all topics
-//         for(string topic : all_topics)
-//             subscribe_no_wildcard(client, topic, type);
-//         return;
-//     }
+void unsubscribe_wildcard(struct client_data* client, string wanted_topic) {
+    if(wanted_topic == "*") {
+        fprintf(history, "MA DEZABONEZ DE LA TOT!!!!!!\n");
+        fflush(history);
+        //(un)subscribe to all topics
+        client->subscriptions.clear();
+        return;
+    }
+    
+    int size = (client->subscriptions).size();
 
-//     vector<string> filtered_topics = filter_topics(wanted_topic);
-//     for(string topic : filtered_topics)
-//         subscribe_no_wildcard(client, topic, type);
-// }
+    for(int i = 0; i < size; i++) {
+        if(match_topic(wanted_topic, client->subscriptions[i])) {
+            client->subscriptions.erase(client->subscriptions.begin() + i);
+            --size;
+            --i;
+        }
+    }
 
-
+}
 
 
 void handle_client_request(struct client_request* request, struct client_data* client) {
@@ -478,8 +483,11 @@ void handle_client_request(struct client_request* request, struct client_data* c
     printClients();
 
     string wanted_topic = string(request->topic);
-
-    subscribe(client,string(request->topic), request->type);
+    // vedem daca are wildcard sau nu
+    if(wanted_topic.find_first_of("*+") != string::npos && request->type == 'u')
+        unsubscribe_wildcard(client, string(request->topic));
+    else 
+        subscribe(client,string(request->topic), request->type);
 
     printClients();
     fprintf(history, "Exit handle_client_request \n");
