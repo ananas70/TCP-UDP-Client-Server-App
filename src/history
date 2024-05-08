@@ -2686,6 +2686,10 @@ Subscriptions:
 ----------------------------------
 	 S-a reconectat. Adaugam iar conexiunea
 	 Exit TCP_connection
+SUBSCRIBER_connection
+	 Finding client by id 
+	 Reading data from client 
+	 Error recv 
 TCP_connection
 im in TCP connection
 	 Accepted client
@@ -2947,6 +2951,9 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [+/ec/100/pressure]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/precis/100/pressure], TYPE = [2], CONTENT = []
 	 Initializat client_pckt
@@ -3227,6 +3234,9 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [upb/+/100/pressure]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/precis/100/pressure], TYPE = [2], CONTENT = []
 	 Initializat client_pckt
@@ -3286,6 +3296,9 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [upb/+/100/pressure]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 SUBSCRIBER_connection
 	 Finding client by id 
 	 Reading data from client 
@@ -3507,6 +3520,9 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [upb/ec/100/+]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/ec/100/humidity], TYPE = [1], CONTENT = [
 3]
@@ -3567,6 +3583,9 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [upb/ec/100/+]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/precis/100/humidity], TYPE = [1], CONTENT = [«]
 	 Initializat client_pckt
@@ -3847,6 +3866,9 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [*/pressure]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/precis/100/pressure], TYPE = [2], CONTENT = []
 	 Initializat client_pckt
@@ -3906,6 +3928,9 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [*/pressure]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/ec/100/humidity], TYPE = [1], CONTENT = [
 3]
@@ -4187,6 +4212,9 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [upb/precis/elevator/*/floor]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/precis/elevator/2/floor], TYPE = [0], CONTENT = []
 	 Initializat client_pckt
@@ -4246,6 +4274,9 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [upb/precis/elevator/*/floor]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/precis/elevator/2/people], TYPE = [0], CONTENT = []
 	 Initializat client_pckt
@@ -4526,6 +4557,9 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [upb/precis/*]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/precis/100/temperature], TYPE = [1], CONTENT = [	~]
 	 Initializat client_pckt
@@ -4585,6 +4619,9 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [upb/precis/*]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/ec/100/temperature], TYPE = [1], CONTENT = [R]
 	 Initializat client_pckt
@@ -4865,6 +4902,9 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [*]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/precis/elevator/1/floor], TYPE = [0], CONTENT = []
 	 Initializat client_pckt
@@ -4924,6 +4964,9 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [*]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/precis/elevator/2/people], TYPE = [0], CONTENT = []
 	 Initializat client_pckt
@@ -4983,6 +5026,9 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [*]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/precis/elevator/2/floor], TYPE = [0], CONTENT = []
 	 Initializat client_pckt
@@ -5042,6 +5088,9 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [*]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/precis/100/temperature], TYPE = [1], CONTENT = [	~]
 	 Initializat client_pckt
@@ -5101,6 +5150,9 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [*]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/precis/100/humidity], TYPE = [1], CONTENT = [«]
 	 Initializat client_pckt
@@ -5160,6 +5212,9 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [*]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/ec/100/temperature], TYPE = [1], CONTENT = [R]
 	 Initializat client_pckt
@@ -5219,6 +5274,9 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [*]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/ec/100/humidity], TYPE = [1], CONTENT = [
 3]
@@ -5279,6 +5337,9 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [*]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/ec/100/pressure], TYPE = [2], CONTENT = []
 	 Initializat client_pckt
@@ -5338,6 +5399,9 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [*]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/precis/100/pressure], TYPE = [2], CONTENT = []
 	 Initializat client_pckt
@@ -5397,6 +5461,9 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [*]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/precis/100/schedule/monday/8], TYPE = [3], CONTENT = [Protocoale De Comunicatie]
 	 Initializat client_pckt
@@ -5456,6 +5523,9 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [*]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/ec/100/schedule/tuesday/12], TYPE = [3], CONTENT = [Protocoale De Comunicatie]
 	 Initializat client_pckt
@@ -5515,6 +5585,9 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [*]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/precis/100/schedule/monday/8], TYPE = [3], CONTENT = [Protocoale De Comunicatie]
 	 Initializat client_pckt
@@ -5574,6 +5647,9 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [*]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/ec/100/schedule/tuesday/12], TYPE = [3], CONTENT = [Protocoale De Comunicatie]
 	 Initializat client_pckt
@@ -5633,11 +5709,14 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [*]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 SUBSCRIBER_connection
 	 Finding client by id 
 	 Reading data from client 
 	 Connected client. Parsing command.
-	 bytes read = 51 
+	 bytes read = 52 
 	 request->type = u
 	 request->topic = *
 	 Going to handle_client_request 
@@ -5718,14 +5797,14 @@ SUBSCRIBER_connection
 	 Finding client by id 
 	 Reading data from client 
 	 Connected client. Parsing command.
-	 bytes read = 51 
-	 request->type = s
-	 request->topic = upb/+/100/+
+	 bytes read = 50 
+	 request->type = u
+	 request->topic = pb/+/100/+
 	 Going to handle_client_request 
 I'm in handle_client_request 
 ---------------Client Request:---------------
-Type: s
-Topic: upb/+/100/+
+Type: u
+Topic: pb/+/100/+
 
 ---------------------------------------------
 --------Printing all clients:-----------
@@ -5788,7 +5867,6 @@ Connected: Yes
 File Descriptor: 7
 Subscriptions:
 - a_non_negative_int
-- upb/+/100/+
 
 ----------------------------------
 Exit handle_client_request 
@@ -5831,7 +5909,6 @@ Connected: Yes
 File Descriptor: 7
 Subscriptions:
 - a_non_negative_int
-- upb/+/100/+
 
 ----------------------------------
 		Clientul din for  = C1
@@ -5853,7 +5930,6 @@ Subscriptions:
 [huge_string]
 		Clientul din for  = C2
 [a_non_negative_int]
-[upb/+/100/+]
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/precis/100/humidity], TYPE = [1], CONTENT = [«]
 	 Initializat client_pckt
@@ -5890,7 +5966,6 @@ Connected: Yes
 File Descriptor: 7
 Subscriptions:
 - a_non_negative_int
-- upb/+/100/+
 
 ----------------------------------
 		Clientul din for  = C1
@@ -5912,7 +5987,6 @@ Subscriptions:
 [huge_string]
 		Clientul din for  = C2
 [a_non_negative_int]
-[upb/+/100/+]
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/precis/100/schedule/monday/8], TYPE = [3], CONTENT = [Protocoale De Comunicatie]
 	 Initializat client_pckt
@@ -5949,7 +6023,6 @@ Connected: Yes
 File Descriptor: 7
 Subscriptions:
 - a_non_negative_int
-- upb/+/100/+
 
 ----------------------------------
 		Clientul din for  = C1
@@ -5971,7 +6044,6 @@ Subscriptions:
 [huge_string]
 		Clientul din for  = C2
 [a_non_negative_int]
-[upb/+/100/+]
 SUBSCRIBER_connection
 	 Finding client by id 
 	 Reading data from client 
@@ -6015,7 +6087,6 @@ Connected: Yes
 File Descriptor: 7
 Subscriptions:
 - a_non_negative_int
-- upb/+/100/+
 
 ----------------------------------
 --------Printing all clients:-----------
@@ -6193,6 +6264,9 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [upb/+/100/*]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/precis/100/schedule/monday/8], TYPE = [3], CONTENT = [Protocoale De Comunicatie]
 	 Initializat client_pckt
@@ -6252,6 +6326,9 @@ Subscriptions:
 		Clientul din for  = C2
 [a_non_negative_int]
 [upb/+/100/*]
+			Found client!! = C2 with fd = 7
+			Sending a message to him
+			Sent [1561] data to him
 UDP_connection 
 	 MESSAGE UDP: TOPIC = [upb/precis/elevator/1/people], TYPE = [0], CONTENT = []
 	 Initializat client_pckt
@@ -6315,7 +6392,7 @@ SUBSCRIBER_connection
 	 Finding client by id 
 	 Reading data from client 
 	 Connected client. Parsing command.
-	 bytes read = 51 
+	 bytes read = 52 
 	 request->type = u
 	 request->topic = upb/+/100/*
 	 Going to handle_client_request 
@@ -6396,14 +6473,16 @@ SUBSCRIBER_connection
 	 Finding client by id 
 	 Reading data from client 
 	 Connected client. Parsing command.
-	 bytes read = 51 
-	 request->type = s
-	 request->topic = */100/+
+	 bytes read = 50 
+	 request->type = *
+	 request->topic = /100/+
+subscrib
 	 Going to handle_client_request 
 I'm in handle_client_request 
 ---------------Client Request:---------------
-Type: s
-Topic: */100/+
+Type: *
+Topic: /100/+
+subscrib
 
 ---------------------------------------------
 --------Printing all clients:-----------
@@ -6435,1111 +6514,6 @@ Connected: Yes
 File Descriptor: 7
 Subscriptions:
 - a_non_negative_int
-
-----------------------------------
---------Printing all clients:-----------
-Index: 0
-Client ID: C1
-Connected: Yes
-File Descriptor: 6
-Subscriptions:
-- a_non_negative_int
-- a_negative_int
-- a_larger_value
-- a_large_negative_value
-- abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx
-- that_is_small_short_real
-- that_is_big_short_real
-- that_is_integer_short_real
-- float_seventeen
-- float_minus_seventeen
-- a_strange_float
-- a_negative_strange_float
-- a_subunitary_float
-- a_negative_subunitary_float
-- ana_string_announce
-- huge_string
-
-Index: 1
-Client ID: C2
-Connected: Yes
-File Descriptor: 7
-Subscriptions:
-- a_non_negative_int
-- */100/+
-
-----------------------------------
-Exit handle_client_request 
-	 Exit SUBSCRIBER_connection
-
-
-UDP_connection 
-	 MESSAGE UDP: TOPIC = [upb/precis/100/temperature], TYPE = [1], CONTENT = [	~]
-	 Initializat client_pckt
-	 TOPIC = upb/precis/100/temperature
-	 Analiza :
-	 DATA TYPE = [1] :
-	 Trimite catre clienti pentru topic-ul [upb/precis/100/temperature]
---------Printing all clients:-----------
-Index: 0
-Client ID: C1
-Connected: Yes
-File Descriptor: 6
-Subscriptions:
-- a_non_negative_int
-- a_negative_int
-- a_larger_value
-- a_large_negative_value
-- abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx
-- that_is_small_short_real
-- that_is_big_short_real
-- that_is_integer_short_real
-- float_seventeen
-- float_minus_seventeen
-- a_strange_float
-- a_negative_strange_float
-- a_subunitary_float
-- a_negative_subunitary_float
-- ana_string_announce
-- huge_string
-
-Index: 1
-Client ID: C2
-Connected: Yes
-File Descriptor: 7
-Subscriptions:
-- a_non_negative_int
-- */100/+
-
-----------------------------------
-		Clientul din for  = C1
-[a_non_negative_int]
-[a_negative_int]
-[a_larger_value]
-[a_large_negative_value]
-[abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx]
-[that_is_small_short_real]
-[that_is_big_short_real]
-[that_is_integer_short_real]
-[float_seventeen]
-[float_minus_seventeen]
-[a_strange_float]
-[a_negative_strange_float]
-[a_subunitary_float]
-[a_negative_subunitary_float]
-[ana_string_announce]
-[huge_string]
-		Clientul din for  = C2
-[a_non_negative_int]
-[*/100/+]
-UDP_connection 
-	 MESSAGE UDP: TOPIC = [upb/precis/100/humidity], TYPE = [1], CONTENT = [«]
-	 Initializat client_pckt
-	 TOPIC = upb/precis/100/humidity
-	 Analiza :
-	 DATA TYPE = [1] :
-	 Trimite catre clienti pentru topic-ul [upb/precis/100/humidity]
---------Printing all clients:-----------
-Index: 0
-Client ID: C1
-Connected: Yes
-File Descriptor: 6
-Subscriptions:
-- a_non_negative_int
-- a_negative_int
-- a_larger_value
-- a_large_negative_value
-- abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx
-- that_is_small_short_real
-- that_is_big_short_real
-- that_is_integer_short_real
-- float_seventeen
-- float_minus_seventeen
-- a_strange_float
-- a_negative_strange_float
-- a_subunitary_float
-- a_negative_subunitary_float
-- ana_string_announce
-- huge_string
-
-Index: 1
-Client ID: C2
-Connected: Yes
-File Descriptor: 7
-Subscriptions:
-- a_non_negative_int
-- */100/+
-
-----------------------------------
-		Clientul din for  = C1
-[a_non_negative_int]
-[a_negative_int]
-[a_larger_value]
-[a_large_negative_value]
-[abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx]
-[that_is_small_short_real]
-[that_is_big_short_real]
-[that_is_integer_short_real]
-[float_seventeen]
-[float_minus_seventeen]
-[a_strange_float]
-[a_negative_strange_float]
-[a_subunitary_float]
-[a_negative_subunitary_float]
-[ana_string_announce]
-[huge_string]
-		Clientul din for  = C2
-[a_non_negative_int]
-[*/100/+]
-UDP_connection 
-	 MESSAGE UDP: TOPIC = [upb/precis/100/schedule/monday/8], TYPE = [3], CONTENT = [Protocoale De Comunicatie]
-	 Initializat client_pckt
-	 TOPIC = upb/precis/100/schedule/monday/8
-	 Analiza :
-	 DATA TYPE = [3] :
-	 Trimite catre clienti pentru topic-ul [upb/precis/100/schedule/monday/8]
---------Printing all clients:-----------
-Index: 0
-Client ID: C1
-Connected: Yes
-File Descriptor: 6
-Subscriptions:
-- a_non_negative_int
-- a_negative_int
-- a_larger_value
-- a_large_negative_value
-- abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx
-- that_is_small_short_real
-- that_is_big_short_real
-- that_is_integer_short_real
-- float_seventeen
-- float_minus_seventeen
-- a_strange_float
-- a_negative_strange_float
-- a_subunitary_float
-- a_negative_subunitary_float
-- ana_string_announce
-- huge_string
-
-Index: 1
-Client ID: C2
-Connected: Yes
-File Descriptor: 7
-Subscriptions:
-- a_non_negative_int
-- */100/+
-
-----------------------------------
-		Clientul din for  = C1
-[a_non_negative_int]
-[a_negative_int]
-[a_larger_value]
-[a_large_negative_value]
-[abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx]
-[that_is_small_short_real]
-[that_is_big_short_real]
-[that_is_integer_short_real]
-[float_seventeen]
-[float_minus_seventeen]
-[a_strange_float]
-[a_negative_strange_float]
-[a_subunitary_float]
-[a_negative_subunitary_float]
-[ana_string_announce]
-[huge_string]
-		Clientul din for  = C2
-[a_non_negative_int]
-[*/100/+]
-UDP_connection 
-	 MESSAGE UDP: TOPIC = [upb/precis/elevator/1/people], TYPE = [0], CONTENT = []
-	 Initializat client_pckt
-	 TOPIC = upb/precis/elevator/1/people
-	 Analiza :
-	 DATA TYPE = [0] :
-	 Trimite catre clienti pentru topic-ul [upb/precis/elevator/1/people]
---------Printing all clients:-----------
-Index: 0
-Client ID: C1
-Connected: Yes
-File Descriptor: 6
-Subscriptions:
-- a_non_negative_int
-- a_negative_int
-- a_larger_value
-- a_large_negative_value
-- abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx
-- that_is_small_short_real
-- that_is_big_short_real
-- that_is_integer_short_real
-- float_seventeen
-- float_minus_seventeen
-- a_strange_float
-- a_negative_strange_float
-- a_subunitary_float
-- a_negative_subunitary_float
-- ana_string_announce
-- huge_string
-
-Index: 1
-Client ID: C2
-Connected: Yes
-File Descriptor: 7
-Subscriptions:
-- a_non_negative_int
-- */100/+
-
-----------------------------------
-		Clientul din for  = C1
-[a_non_negative_int]
-[a_negative_int]
-[a_larger_value]
-[a_large_negative_value]
-[abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx]
-[that_is_small_short_real]
-[that_is_big_short_real]
-[that_is_integer_short_real]
-[float_seventeen]
-[float_minus_seventeen]
-[a_strange_float]
-[a_negative_strange_float]
-[a_subunitary_float]
-[a_negative_subunitary_float]
-[ana_string_announce]
-[huge_string]
-		Clientul din for  = C2
-[a_non_negative_int]
-[*/100/+]
-SUBSCRIBER_connection
-	 Finding client by id 
-	 Reading data from client 
-	 Connected client. Parsing command.
-	 bytes read = 51 
-	 request->type = u
-	 request->topic = */100/+
-	 Going to handle_client_request 
-I'm in handle_client_request 
----------------Client Request:---------------
-Type: u
-Topic: */100/+
-
----------------------------------------------
---------Printing all clients:-----------
-Index: 0
-Client ID: C1
-Connected: Yes
-File Descriptor: 6
-Subscriptions:
-- a_non_negative_int
-- a_negative_int
-- a_larger_value
-- a_large_negative_value
-- abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx
-- that_is_small_short_real
-- that_is_big_short_real
-- that_is_integer_short_real
-- float_seventeen
-- float_minus_seventeen
-- a_strange_float
-- a_negative_strange_float
-- a_subunitary_float
-- a_negative_subunitary_float
-- ana_string_announce
-- huge_string
-
-Index: 1
-Client ID: C2
-Connected: Yes
-File Descriptor: 7
-Subscriptions:
-- a_non_negative_int
-- */100/+
-
-----------------------------------
---------Printing all clients:-----------
-Index: 0
-Client ID: C1
-Connected: Yes
-File Descriptor: 6
-Subscriptions:
-- a_non_negative_int
-- a_negative_int
-- a_larger_value
-- a_large_negative_value
-- abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx
-- that_is_small_short_real
-- that_is_big_short_real
-- that_is_integer_short_real
-- float_seventeen
-- float_minus_seventeen
-- a_strange_float
-- a_negative_strange_float
-- a_subunitary_float
-- a_negative_subunitary_float
-- ana_string_announce
-- huge_string
-
-Index: 1
-Client ID: C2
-Connected: Yes
-File Descriptor: 7
-Subscriptions:
-- a_non_negative_int
-
-----------------------------------
-Exit handle_client_request 
-	 Exit SUBSCRIBER_connection
-
-
-SUBSCRIBER_connection
-	 Finding client by id 
-	 Reading data from client 
-	 Connected client. Parsing command.
-	 bytes read = 51 
-	 request->type = s
-	 request->topic = */100/*
-	 Going to handle_client_request 
-I'm in handle_client_request 
----------------Client Request:---------------
-Type: s
-Topic: */100/*
-
----------------------------------------------
---------Printing all clients:-----------
-Index: 0
-Client ID: C1
-Connected: Yes
-File Descriptor: 6
-Subscriptions:
-- a_non_negative_int
-- a_negative_int
-- a_larger_value
-- a_large_negative_value
-- abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx
-- that_is_small_short_real
-- that_is_big_short_real
-- that_is_integer_short_real
-- float_seventeen
-- float_minus_seventeen
-- a_strange_float
-- a_negative_strange_float
-- a_subunitary_float
-- a_negative_subunitary_float
-- ana_string_announce
-- huge_string
-
-Index: 1
-Client ID: C2
-Connected: Yes
-File Descriptor: 7
-Subscriptions:
-- a_non_negative_int
-
-----------------------------------
---------Printing all clients:-----------
-Index: 0
-Client ID: C1
-Connected: Yes
-File Descriptor: 6
-Subscriptions:
-- a_non_negative_int
-- a_negative_int
-- a_larger_value
-- a_large_negative_value
-- abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx
-- that_is_small_short_real
-- that_is_big_short_real
-- that_is_integer_short_real
-- float_seventeen
-- float_minus_seventeen
-- a_strange_float
-- a_negative_strange_float
-- a_subunitary_float
-- a_negative_subunitary_float
-- ana_string_announce
-- huge_string
-
-Index: 1
-Client ID: C2
-Connected: Yes
-File Descriptor: 7
-Subscriptions:
-- a_non_negative_int
-- */100/*
-
-----------------------------------
-Exit handle_client_request 
-	 Exit SUBSCRIBER_connection
-
-
-UDP_connection 
-	 MESSAGE UDP: TOPIC = [upb/precis/100/temperature], TYPE = [1], CONTENT = [	~]
-	 Initializat client_pckt
-	 TOPIC = upb/precis/100/temperature
-	 Analiza :
-	 DATA TYPE = [1] :
-	 Trimite catre clienti pentru topic-ul [upb/precis/100/temperature]
---------Printing all clients:-----------
-Index: 0
-Client ID: C1
-Connected: Yes
-File Descriptor: 6
-Subscriptions:
-- a_non_negative_int
-- a_negative_int
-- a_larger_value
-- a_large_negative_value
-- abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx
-- that_is_small_short_real
-- that_is_big_short_real
-- that_is_integer_short_real
-- float_seventeen
-- float_minus_seventeen
-- a_strange_float
-- a_negative_strange_float
-- a_subunitary_float
-- a_negative_subunitary_float
-- ana_string_announce
-- huge_string
-
-Index: 1
-Client ID: C2
-Connected: Yes
-File Descriptor: 7
-Subscriptions:
-- a_non_negative_int
-- */100/*
-
-----------------------------------
-		Clientul din for  = C1
-[a_non_negative_int]
-[a_negative_int]
-[a_larger_value]
-[a_large_negative_value]
-[abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx]
-[that_is_small_short_real]
-[that_is_big_short_real]
-[that_is_integer_short_real]
-[float_seventeen]
-[float_minus_seventeen]
-[a_strange_float]
-[a_negative_strange_float]
-[a_subunitary_float]
-[a_negative_subunitary_float]
-[ana_string_announce]
-[huge_string]
-		Clientul din for  = C2
-[a_non_negative_int]
-[*/100/*]
-UDP_connection 
-	 MESSAGE UDP: TOPIC = [upb/precis/100/humidity], TYPE = [1], CONTENT = [«]
-	 Initializat client_pckt
-	 TOPIC = upb/precis/100/humidity
-	 Analiza :
-	 DATA TYPE = [1] :
-	 Trimite catre clienti pentru topic-ul [upb/precis/100/humidity]
---------Printing all clients:-----------
-Index: 0
-Client ID: C1
-Connected: Yes
-File Descriptor: 6
-Subscriptions:
-- a_non_negative_int
-- a_negative_int
-- a_larger_value
-- a_large_negative_value
-- abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx
-- that_is_small_short_real
-- that_is_big_short_real
-- that_is_integer_short_real
-- float_seventeen
-- float_minus_seventeen
-- a_strange_float
-- a_negative_strange_float
-- a_subunitary_float
-- a_negative_subunitary_float
-- ana_string_announce
-- huge_string
-
-Index: 1
-Client ID: C2
-Connected: Yes
-File Descriptor: 7
-Subscriptions:
-- a_non_negative_int
-- */100/*
-
-----------------------------------
-		Clientul din for  = C1
-[a_non_negative_int]
-[a_negative_int]
-[a_larger_value]
-[a_large_negative_value]
-[abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx]
-[that_is_small_short_real]
-[that_is_big_short_real]
-[that_is_integer_short_real]
-[float_seventeen]
-[float_minus_seventeen]
-[a_strange_float]
-[a_negative_strange_float]
-[a_subunitary_float]
-[a_negative_subunitary_float]
-[ana_string_announce]
-[huge_string]
-		Clientul din for  = C2
-[a_non_negative_int]
-[*/100/*]
-UDP_connection 
-	 MESSAGE UDP: TOPIC = [upb/precis/100/schedule/monday/8], TYPE = [3], CONTENT = [Protocoale De Comunicatie]
-	 Initializat client_pckt
-	 TOPIC = upb/precis/100/schedule/monday/8
-	 Analiza :
-	 DATA TYPE = [3] :
-	 Trimite catre clienti pentru topic-ul [upb/precis/100/schedule/monday/8]
---------Printing all clients:-----------
-Index: 0
-Client ID: C1
-Connected: Yes
-File Descriptor: 6
-Subscriptions:
-- a_non_negative_int
-- a_negative_int
-- a_larger_value
-- a_large_negative_value
-- abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx
-- that_is_small_short_real
-- that_is_big_short_real
-- that_is_integer_short_real
-- float_seventeen
-- float_minus_seventeen
-- a_strange_float
-- a_negative_strange_float
-- a_subunitary_float
-- a_negative_subunitary_float
-- ana_string_announce
-- huge_string
-
-Index: 1
-Client ID: C2
-Connected: Yes
-File Descriptor: 7
-Subscriptions:
-- a_non_negative_int
-- */100/*
-
-----------------------------------
-		Clientul din for  = C1
-[a_non_negative_int]
-[a_negative_int]
-[a_larger_value]
-[a_large_negative_value]
-[abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx]
-[that_is_small_short_real]
-[that_is_big_short_real]
-[that_is_integer_short_real]
-[float_seventeen]
-[float_minus_seventeen]
-[a_strange_float]
-[a_negative_strange_float]
-[a_subunitary_float]
-[a_negative_subunitary_float]
-[ana_string_announce]
-[huge_string]
-		Clientul din for  = C2
-[a_non_negative_int]
-[*/100/*]
-UDP_connection 
-	 MESSAGE UDP: TOPIC = [upb/precis/elevator/1/people], TYPE = [0], CONTENT = []
-	 Initializat client_pckt
-	 TOPIC = upb/precis/elevator/1/people
-	 Analiza :
-	 DATA TYPE = [0] :
-	 Trimite catre clienti pentru topic-ul [upb/precis/elevator/1/people]
---------Printing all clients:-----------
-Index: 0
-Client ID: C1
-Connected: Yes
-File Descriptor: 6
-Subscriptions:
-- a_non_negative_int
-- a_negative_int
-- a_larger_value
-- a_large_negative_value
-- abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx
-- that_is_small_short_real
-- that_is_big_short_real
-- that_is_integer_short_real
-- float_seventeen
-- float_minus_seventeen
-- a_strange_float
-- a_negative_strange_float
-- a_subunitary_float
-- a_negative_subunitary_float
-- ana_string_announce
-- huge_string
-
-Index: 1
-Client ID: C2
-Connected: Yes
-File Descriptor: 7
-Subscriptions:
-- a_non_negative_int
-- */100/*
-
-----------------------------------
-		Clientul din for  = C1
-[a_non_negative_int]
-[a_negative_int]
-[a_larger_value]
-[a_large_negative_value]
-[abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx]
-[that_is_small_short_real]
-[that_is_big_short_real]
-[that_is_integer_short_real]
-[float_seventeen]
-[float_minus_seventeen]
-[a_strange_float]
-[a_negative_strange_float]
-[a_subunitary_float]
-[a_negative_subunitary_float]
-[ana_string_announce]
-[huge_string]
-		Clientul din for  = C2
-[a_non_negative_int]
-[*/100/*]
-SUBSCRIBER_connection
-	 Finding client by id 
-	 Reading data from client 
-	 Connected client. Parsing command.
-	 bytes read = 51 
-	 request->type = u
-	 request->topic = */100/*
-	 Going to handle_client_request 
-I'm in handle_client_request 
----------------Client Request:---------------
-Type: u
-Topic: */100/*
-
----------------------------------------------
---------Printing all clients:-----------
-Index: 0
-Client ID: C1
-Connected: Yes
-File Descriptor: 6
-Subscriptions:
-- a_non_negative_int
-- a_negative_int
-- a_larger_value
-- a_large_negative_value
-- abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx
-- that_is_small_short_real
-- that_is_big_short_real
-- that_is_integer_short_real
-- float_seventeen
-- float_minus_seventeen
-- a_strange_float
-- a_negative_strange_float
-- a_subunitary_float
-- a_negative_subunitary_float
-- ana_string_announce
-- huge_string
-
-Index: 1
-Client ID: C2
-Connected: Yes
-File Descriptor: 7
-Subscriptions:
-- a_non_negative_int
-- */100/*
-
-----------------------------------
---------Printing all clients:-----------
-Index: 0
-Client ID: C1
-Connected: Yes
-File Descriptor: 6
-Subscriptions:
-- a_non_negative_int
-- a_negative_int
-- a_larger_value
-- a_large_negative_value
-- abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx
-- that_is_small_short_real
-- that_is_big_short_real
-- that_is_integer_short_real
-- float_seventeen
-- float_minus_seventeen
-- a_strange_float
-- a_negative_strange_float
-- a_subunitary_float
-- a_negative_subunitary_float
-- ana_string_announce
-- huge_string
-
-Index: 1
-Client ID: C2
-Connected: Yes
-File Descriptor: 7
-Subscriptions:
-- a_non_negative_int
-
-----------------------------------
-Exit handle_client_request 
-	 Exit SUBSCRIBER_connection
-
-
-SUBSCRIBER_connection
-	 Finding client by id 
-	 Reading data from client 
-	 Connected client. Parsing command.
-	 bytes read = 51 
-	 request->type = s
-	 request->topic = upb/precis/100/+
-	 Going to handle_client_request 
-I'm in handle_client_request 
----------------Client Request:---------------
-Type: s
-Topic: upb/precis/100/+
-
----------------------------------------------
---------Printing all clients:-----------
-Index: 0
-Client ID: C1
-Connected: Yes
-File Descriptor: 6
-Subscriptions:
-- a_non_negative_int
-- a_negative_int
-- a_larger_value
-- a_large_negative_value
-- abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx
-- that_is_small_short_real
-- that_is_big_short_real
-- that_is_integer_short_real
-- float_seventeen
-- float_minus_seventeen
-- a_strange_float
-- a_negative_strange_float
-- a_subunitary_float
-- a_negative_subunitary_float
-- ana_string_announce
-- huge_string
-
-Index: 1
-Client ID: C2
-Connected: Yes
-File Descriptor: 7
-Subscriptions:
-- a_non_negative_int
-
-----------------------------------
---------Printing all clients:-----------
-Index: 0
-Client ID: C1
-Connected: Yes
-File Descriptor: 6
-Subscriptions:
-- a_non_negative_int
-- a_negative_int
-- a_larger_value
-- a_large_negative_value
-- abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx
-- that_is_small_short_real
-- that_is_big_short_real
-- that_is_integer_short_real
-- float_seventeen
-- float_minus_seventeen
-- a_strange_float
-- a_negative_strange_float
-- a_subunitary_float
-- a_negative_subunitary_float
-- ana_string_announce
-- huge_string
-
-Index: 1
-Client ID: C2
-Connected: Yes
-File Descriptor: 7
-Subscriptions:
-- a_non_negative_int
-- upb/precis/100/+
-
-----------------------------------
-Exit handle_client_request 
-	 Exit SUBSCRIBER_connection
-
-
-SUBSCRIBER_connection
-	 Finding client by id 
-	 Reading data from client 
-	 Connected client. Parsing command.
-	 bytes read = 51 
-	 request->type = s
-	 request->topic = upb/precis/100/*
-	 Going to handle_client_request 
-I'm in handle_client_request 
----------------Client Request:---------------
-Type: s
-Topic: upb/precis/100/*
-
----------------------------------------------
---------Printing all clients:-----------
-Index: 0
-Client ID: C1
-Connected: Yes
-File Descriptor: 6
-Subscriptions:
-- a_non_negative_int
-- a_negative_int
-- a_larger_value
-- a_large_negative_value
-- abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx
-- that_is_small_short_real
-- that_is_big_short_real
-- that_is_integer_short_real
-- float_seventeen
-- float_minus_seventeen
-- a_strange_float
-- a_negative_strange_float
-- a_subunitary_float
-- a_negative_subunitary_float
-- ana_string_announce
-- huge_string
-
-Index: 1
-Client ID: C2
-Connected: Yes
-File Descriptor: 7
-Subscriptions:
-- a_non_negative_int
-- upb/precis/100/+
-
-----------------------------------
---------Printing all clients:-----------
-Index: 0
-Client ID: C1
-Connected: Yes
-File Descriptor: 6
-Subscriptions:
-- a_non_negative_int
-- a_negative_int
-- a_larger_value
-- a_large_negative_value
-- abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx
-- that_is_small_short_real
-- that_is_big_short_real
-- that_is_integer_short_real
-- float_seventeen
-- float_minus_seventeen
-- a_strange_float
-- a_negative_strange_float
-- a_subunitary_float
-- a_negative_subunitary_float
-- ana_string_announce
-- huge_string
-
-Index: 1
-Client ID: C2
-Connected: Yes
-File Descriptor: 7
-Subscriptions:
-- a_non_negative_int
-- upb/precis/100/+
-- upb/precis/100/*
-
-----------------------------------
-Exit handle_client_request 
-	 Exit SUBSCRIBER_connection
-
-
-UDP_connection 
-	 MESSAGE UDP: TOPIC = [upb/precis/100/temperature], TYPE = [1], CONTENT = [	~]
-	 Initializat client_pckt
-	 TOPIC = upb/precis/100/temperature
-	 Analiza :
-	 DATA TYPE = [1] :
-	 Trimite catre clienti pentru topic-ul [upb/precis/100/temperature]
---------Printing all clients:-----------
-Index: 0
-Client ID: C1
-Connected: Yes
-File Descriptor: 6
-Subscriptions:
-- a_non_negative_int
-- a_negative_int
-- a_larger_value
-- a_large_negative_value
-- abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx
-- that_is_small_short_real
-- that_is_big_short_real
-- that_is_integer_short_real
-- float_seventeen
-- float_minus_seventeen
-- a_strange_float
-- a_negative_strange_float
-- a_subunitary_float
-- a_negative_subunitary_float
-- ana_string_announce
-- huge_string
-
-Index: 1
-Client ID: C2
-Connected: Yes
-File Descriptor: 7
-Subscriptions:
-- a_non_negative_int
-- upb/precis/100/+
-- upb/precis/100/*
-
-----------------------------------
-		Clientul din for  = C1
-[a_non_negative_int]
-[a_negative_int]
-[a_larger_value]
-[a_large_negative_value]
-[abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx]
-[that_is_small_short_real]
-[that_is_big_short_real]
-[that_is_integer_short_real]
-[float_seventeen]
-[float_minus_seventeen]
-[a_strange_float]
-[a_negative_strange_float]
-[a_subunitary_float]
-[a_negative_subunitary_float]
-[ana_string_announce]
-[huge_string]
-		Clientul din for  = C2
-[a_non_negative_int]
-[upb/precis/100/+]
-[upb/precis/100/*]
-SUBSCRIBER_connection
-	 Finding client by id 
-	 Reading data from client 
-	 Connected client. Parsing command.
-	 bytes read = 51 
-	 request->type = u
-	 request->topic = upb/precis/100/+
-	 Going to handle_client_request 
-I'm in handle_client_request 
----------------Client Request:---------------
-Type: u
-Topic: upb/precis/100/+
-
----------------------------------------------
---------Printing all clients:-----------
-Index: 0
-Client ID: C1
-Connected: Yes
-File Descriptor: 6
-Subscriptions:
-- a_non_negative_int
-- a_negative_int
-- a_larger_value
-- a_large_negative_value
-- abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx
-- that_is_small_short_real
-- that_is_big_short_real
-- that_is_integer_short_real
-- float_seventeen
-- float_minus_seventeen
-- a_strange_float
-- a_negative_strange_float
-- a_subunitary_float
-- a_negative_subunitary_float
-- ana_string_announce
-- huge_string
-
-Index: 1
-Client ID: C2
-Connected: Yes
-File Descriptor: 7
-Subscriptions:
-- a_non_negative_int
-- upb/precis/100/+
-- upb/precis/100/*
-
-----------------------------------
---------Printing all clients:-----------
-Index: 0
-Client ID: C1
-Connected: Yes
-File Descriptor: 6
-Subscriptions:
-- a_non_negative_int
-- a_negative_int
-- a_larger_value
-- a_large_negative_value
-- abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx
-- that_is_small_short_real
-- that_is_big_short_real
-- that_is_integer_short_real
-- float_seventeen
-- float_minus_seventeen
-- a_strange_float
-- a_negative_strange_float
-- a_subunitary_float
-- a_negative_subunitary_float
-- ana_string_announce
-- huge_string
-
-Index: 1
-Client ID: C2
-Connected: Yes
-File Descriptor: 7
-Subscriptions:
-- a_non_negative_int
-- upb/precis/100/*
-
-----------------------------------
-Exit handle_client_request 
-	 Exit SUBSCRIBER_connection
-
-
-SUBSCRIBER_connection
-	 Finding client by id 
-	 Reading data from client 
-	 Connected client. Parsing command.
-	 bytes read = 51 
-	 request->type = u
-	 request->topic = upb/precis/100/*
-	 Going to handle_client_request 
-I'm in handle_client_request 
----------------Client Request:---------------
-Type: u
-Topic: upb/precis/100/*
-
----------------------------------------------
---------Printing all clients:-----------
-Index: 0
-Client ID: C1
-Connected: Yes
-File Descriptor: 6
-Subscriptions:
-- a_non_negative_int
-- a_negative_int
-- a_larger_value
-- a_large_negative_value
-- abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx
-- that_is_small_short_real
-- that_is_big_short_real
-- that_is_integer_short_real
-- float_seventeen
-- float_minus_seventeen
-- a_strange_float
-- a_negative_strange_float
-- a_subunitary_float
-- a_negative_subunitary_float
-- ana_string_announce
-- huge_string
-
-Index: 1
-Client ID: C2
-Connected: Yes
-File Descriptor: 7
-Subscriptions:
-- a_non_negative_int
-- upb/precis/100/*
 
 ----------------------------------
 --------Printing all clients:-----------

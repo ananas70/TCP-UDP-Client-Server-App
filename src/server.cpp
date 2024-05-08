@@ -12,6 +12,7 @@
 #include <unistd.h>
 #include <experimental/optional>
 #include <algorithm>
+#include <sstream>
 
 using namespace std;
 // SUBSCRIBER = CLIENT TCP 
@@ -21,6 +22,8 @@ vector <struct pollfd> pfds;    // vector in care stocam file descriptorii pentr
                                 // alocat dinamic pentru eficienta
 
 vector <struct client_data> clients;    // clientii TCP (subscriber-ii)
+
+vector <string> all_topics; // toate topic-urile intalnite
 
 
 void printClients() {
@@ -119,6 +122,90 @@ void build_notification(client_notification* client_pckt, struct udp_pckt* messa
 //            notification->data_type,
 //            notification->content);
 // }
+bool match_topic(string pattern, string topic) {
+    stringstream pattern_stream(pattern);
+    stringstream topic_stream(topic);
+
+    string pattern_word, topic_word;
+    while (getline(pattern_stream, pattern_word, '/')) {
+        if (!getline(topic_stream, topic_word, '/')) {
+            // If the topic has fewer parts than the pattern, it doesn't match
+            return false;
+        }
+        if (pattern_word != "*" && pattern_word != "+" && pattern_word != topic_word) {
+            // If parts don't match and the pattern part is not a wildcard, return false
+            return false;
+        }
+
+        if (pattern_word == "+") {
+            // If pattern part is '+', skip to the next part in both pattern and topic
+            continue;
+        }
+
+        if (pattern_word == "*") {
+            // If pattern part is '*', special algorithm
+            if(!getline(pattern_stream, pattern_word, '/'))
+                //daca steluta e ultimul cuvant din pattern
+                return true;
+
+            //acum, pattern_word are stocat in el primul cuvant de dupa steluta
+            bool found_next = false;
+            //iteram in topic pana dam de pattern_word
+            while (getline(topic_stream, topic_word, '/')) {
+                if(topic_word == pattern_word) {
+                    //reset
+                    found_next = true;
+                    break;                
+                }
+            }
+
+            if(!found_next)
+                return false;
+        }
+    }
+    return true;
+}
+
+vector<string> filter_topics(string pattern) {
+    vector<string> result;
+    for (auto& topic : all_topics)
+        if(match_topic(pattern, topic))
+            result.push_back(topic);
+    return result;
+}
+
+
+void send_notification_to_client(client_data client, char* topic, client_notification client_pckt) {
+
+    for(auto& subscription : client.subscriptions) {
+        bool ok = false;
+            // vedem daca are wildcard sau nu
+            if(subscription.find_first_of("*+") != string::npos) {
+                // ARE WILDCARD
+                if(match_topic(subscription, string(topic)))
+                    ok = true;
+            }
+            else {
+                // NU ARE WILDCARD
+                if (string(topic) == subscription && client.connected)
+                    ok = true;
+            }
+
+            if(ok) {
+                
+                fprintf(history, "\t\t\tFound client!! = %s with fd = %d\n", client.id, client.fd);
+                fprintf(history, "\t\t\tSending a message to him\n");
+                fflush(history);
+                int rc = send(client.fd, (char*) &client_pckt, sizeof(client_pckt), 0);
+                if (rc <= 0) {
+                    cerr << "Send error\n";
+                    return;
+                }
+                fprintf(history, "\t\t\tSent [%d] data to him\n", rc);
+                fflush(history);
+            }
+    }
+}
 
 
 void UDP_connection(int udp_sock, struct sockaddr_in udp_addr) {
@@ -171,21 +258,14 @@ void UDP_connection(int udp_sock, struct sockaddr_in udp_addr) {
             fprintf(history, "[%s]\n", sub.c_str());
             fflush(history);
         }
-        for(auto& subscription : client.subscriptions) {
-            if (string(message->topic) == subscription && client.connected) {
-                
-                fprintf(history, "\t\t\tFound client!! = %s with fd = %d\n", client.id, client.fd);
-                fprintf(history, "\t\t\tSending a message to him\n");
-                fflush(history);
-                int rc = send(client.fd, (char*) &client_pckt, sizeof(client_pckt), 0);
-                if (rc <= 0) {
-                    cerr << "Send error\n";
-                    return;
-                }
-                fprintf(history, "\t\t\tSent [%d] data to him\n", rc);
-                fflush(history);
-            }
-        }
+
+
+        //add new topic
+        auto it = find(all_topics.begin(),all_topics.end(), string(message->topic));
+        if(it == all_topics.end())
+            all_topics.push_back(string(message->topic));
+
+        send_notification_to_client(client, message->topic, client_pckt);
     }
 }
 
@@ -349,29 +429,61 @@ void printRequest(const client_request* request) {
     fprintf(history, "---------------------------------------------\n");
 }
 
-void handle_client_request(struct client_request* request, struct client_data* client) {
-    fprintf(history, "I'm in handle_client_request \n");
-    fflush(history);
-    printRequest(request);
-    printClients();
-    auto it = find(client->subscriptions.begin(),client->subscriptions.end(), string(request->topic));
 
-    if(request->type == 's') {
+void subscribe(struct client_data* client, string wanted_topic, char type) {
+    auto it = find(client->subscriptions.begin(),client->subscriptions.end(), wanted_topic);
+
+    if(type == 's') {
         // subscribe
         if(it != client->subscriptions.end())
             return; // e deja abonat
 
         // altfel, adaugam abonamentul (m-as abona la inima ta)
-        client->subscriptions.push_back(string(request->topic));
+        client->subscriptions.push_back(wanted_topic);
     }
     else {
         //unsubscribe
         if (it != client->subscriptions.end())
             client->subscriptions.erase(it);
     }
+}
+
+
+
+
+// void subscribe_wildcard(struct client_data* client, string wanted_topic, char type) {
+//     fprintf(history, "sunt in subscribe wildcard!!!!!!\n");
+//     fflush(history);
+//     if(wanted_topic == "*"){
+//         fprintf(history, "MA ABONEZ LA TOT!!!!!!\n");
+//         fflush(history);
+//         //(un)subscribe to all topics
+//         for(string topic : all_topics)
+//             subscribe_no_wildcard(client, topic, type);
+//         return;
+//     }
+
+//     vector<string> filtered_topics = filter_topics(wanted_topic);
+//     for(string topic : filtered_topics)
+//         subscribe_no_wildcard(client, topic, type);
+// }
+
+
+
+
+void handle_client_request(struct client_request* request, struct client_data* client) {
+    fprintf(history, "I'm in handle_client_request \n");
+    fflush(history);
+    printRequest(request);
+    printClients();
+
+    string wanted_topic = string(request->topic);
+
+    subscribe(client,string(request->topic), request->type);
+
     printClients();
     fprintf(history, "Exit handle_client_request \n");
-        fflush(history);
+    fflush(history);
 
 }
 
