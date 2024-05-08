@@ -5,8 +5,6 @@ SRCDIR := src
 BUILDDIR := build
 TARGETS := server subscriber
 
-COMMON_SRCS := $(SRCDIR)/common.c
-COMMON_OBJS := $(BUILDDIR)/common.o
 
 SERVER_SRCS := $(SRCDIR)/server.cpp
 SERVER_OBJS := $(BUILDDIR)/server.o

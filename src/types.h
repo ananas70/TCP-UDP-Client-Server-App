@@ -6,7 +6,7 @@
 #include <string>
 
 #define BUF_LEN 1600
-#define TOPIC_LEN 50    //e o naroada fix cu len = 50
+#define TOPIC_LEN 50
 #define CONTENT_LEN 1500
 #define DATA_TYPE_LEN 11
 #define ID_LEN 10
@@ -22,7 +22,6 @@ struct udp_pckt {
 
 
 struct client_notification {
-    //<IP_CLIENT_UDP>:<PORT_CLIENT_UDP> - <TOPIC> - <TIP_DATE> - <VALOARE_MESAJ>
     char topic[TOPIC_LEN];
     char data_type[DATA_TYPE_LEN];
     char content[CONTENT_LEN];
